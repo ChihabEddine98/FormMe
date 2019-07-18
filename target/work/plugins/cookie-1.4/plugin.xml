@@ -1,0 +1,11 @@
+<plugin name='cookie' version='1.4' grailsVersion='2.4.0 &gt; *'>
+  <author>Sergey Ponomarev</author>
+  <authorEmail>stokito@gmail.com</authorEmail>
+  <title>Cookie Plugin</title>
+  <description>Makes dealing with cookies easy. Provides an injectable service and expands request with methods to easily get, set, and delete cookies with one line</description>
+  <documentation>https://github.com/stokito/grails-cookie</documentation>
+  <type>CookieGrailsPlugin</type>
+  <resources>
+    <resource>grails.plugin.cookie.CookieService</resource>
+  </resources>
+</plugin>

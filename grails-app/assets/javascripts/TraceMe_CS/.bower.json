@@ -1,0 +1,14 @@
+{
+  "name": "TraceMe_CS",
+  "homepage": "https://github.com/fderbel/TraceMe_CS",
+  "_release": "f8c64f4ead",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f8c64f4eadce6cc7c0d86f00b600cc130aca3887"
+  },
+  "_source": "https://github.com/fderbel/TraceMe_CS.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/fderbel/TraceMe_CS.git",
+  "_direct": true
+}

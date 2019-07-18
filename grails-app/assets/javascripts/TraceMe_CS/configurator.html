@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="./configurator.js"></script>
+        <style type="text/css">
+        .input-group {
+            position: relative;
+            display: table;
+            border-collapse: separate;
+            margin-top: 3px;
+            margin-bottom: 3px;
+          }
+          label {
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1;
+            color: #555;
+            text-align: center;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+          input,select,button {
+            color: #0000;
+            border-color: #357ebd;
+            padding: 5px 10px;
+            margin-left: 50px;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin: 10px;
+          }
+          div{
+          width : "100%";
+          }
+          iframe {
+            width: 66.66666666666666%;
+            height: 400px;
+          }
+          span {
+            width: 33%;
+            float: right;
+           }
+        </style>
+    </head>
+    <body>
+        <form id="ConfigTracage" role="form">
+          <h1 id="conftrace"></h1>
+          <div class="input-group">
+          <label for="URL">URL File</label>
+          <input Id="URL" type="text">
+          <input type="button"  id="Load" value="Load">
+          <input type="button"  id ="ADDEvent" value="Add event"></input>
+        </div>
+        <div >
+
+            <input type="checkbox" id="URLCK" > URL </input>
+            <input type="checkbox" id="Hostname"> Hostname </input>
+
+        </div>
+         <div>
+          <iframe>
+          </iframe>
+          <span  Id="SelectorT" ></span>
+
+        </div>
+        <div id="EventList"> </div>
+        <br>
+        <button type="button" id="Save" value = "Save">Save</button>
+      </form>
+      <div id ="configuration"></div>
+</body>
+</html>

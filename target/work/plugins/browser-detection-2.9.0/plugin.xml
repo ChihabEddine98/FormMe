@@ -1,0 +1,14 @@
+<plugin name='browser-detection' version='2.9.0' grailsVersion='2.2 &gt; *'>
+  <author>Gennady Tsarik, Mathias Fonseca</author>
+  <authorEmail>mathifonseca@gmail.com</authorEmail>
+  <title>Browser Detection Plugin</title>
+  <description>This plugin helps you detect browsers, versions, language and operating systems from the request headers.
+</description>
+  <documentation>http://grails.org/plugin/browser-detection</documentation>
+  <type>BrowserDetectionGrailsPlugin</type>
+  <resources>
+    <resource>org.geeks.browserdetection.UserAgentIdentService</resource>
+    <resource>org.geeks.browserdetection.WebTierService</resource>
+    <resource>org.geeks.browserdetection.BrowserTagLib</resource>
+  </resources>
+</plugin>

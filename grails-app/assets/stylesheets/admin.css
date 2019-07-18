@@ -1,0 +1,437 @@
+/*  fonts utilisées */
+@font-face {
+    font-family: 'lato';
+    src: url(../bootstrap/fonts/Lato.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'abel';
+    src: url(../bootstrap/fonts/Abel-Regular.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'oswald';
+    src: url(../bootstrap/fonts/Oswald.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /*background-image: url("../images/bg.jpg");*/
+    background-size: cover;
+    background: var(--grad-bg-col);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+html, body, .row {
+    height: 100%;
+}
+
+body {
+    font-family: "Open Sans";
+    background-color: #f3f3f3;;
+    font-size: 20px;
+}
+
+a, thead {
+    color: white;
+    text-decoration: none;
+    font-family: "Open Sans";
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.navbar {
+    height: 60px;
+}
+
+.main-nav {
+    color: #9fa7b2;
+    background-color: #354052;
+    margin: 0;
+    width: 100px;
+    height: 100%;
+    margin-left: -8px;
+    margin-top: -8px;
+    display: inline-block;
+    position: fixed;
+    z-index: 1;
+}
+
+.top-nav {
+    color: #9fa7b2;
+    background-color: #354052;
+    width: 100%;
+    height: 80px;
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    margin-top: -70px;
+    margin-left: -6px;
+
+}
+
+.top-nav h1 {
+    display: inline-block;
+    margin-left: 120px;
+    margin-top: 20px;
+    color: white;
+}
+
+ul {
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+.menu-nav {
+    list-style-type: none;
+    text-align: center;
+    font-size: 12px;
+    height: 80px;
+}
+
+.menu-nav a {
+    color: #9fa7b2;
+    text-decoration: none;
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    margin-left: -50px;
+    padding-top: 20px;
+}
+
+.fa-layout {
+    width: 100%;
+    font-size: 25px !important;
+}
+
+.menu-nav:hover {
+    background-color: #47bac1;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+.user {
+    float: right;
+    padding: 30px 40px;
+    color: white;
+}
+
+.content {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 100px;
+    margin-left: 90px;
+    width: 85%;
+    padding: 0 40px;
+}
+
+table {
+    width: 100%;
+    padding: 10px 40px;
+}
+
+table tr {
+    border-bottom: 1px solid #354052;
+    height: 60px;
+    padding: 10px 10px;
+}
+
+table th {
+    border-right: 1px solid #354052;
+    text-align: center;
+}
+
+table th:last-child {
+    border-right: none;
+}
+
+
+
+table tr:last-child {
+    border-bottom: none;
+}
+
+td {
+    margin-left: 10px;
+    padding: 0 30px;
+}
+
+.results {
+    background-color: #2aabd2;
+}
+
+.resultsAuth {
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.activeLi {
+    background-color: #47bac1 !important;
+}
+
+.activeA {
+    color: #ffffff !important;
+}
+
+th {
+    text-align: -webkit-left;
+    padding: 0 10px;
+    width: 95px;
+}
+
+th a {
+    font-size: 25px;
+    vertical-align: sub;
+}
+
+thead {
+    background-color: #354052;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td a {
+    color: black;
+}
+
+td a:hover {
+    text-decoration: underline;
+    color: #47bac1;
+}
+
+tbody {
+    font-size: 10px;
+}
+
+.button {
+    background-color: #354052;
+    border-radius: 22px;
+    border: 1px solid #47bac1;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-shadow:0 1px 0 #354052;
+    vertical-align: super;
+}
+.button:hover {
+    background-color:#47bac1;
+    border: 1px solid #354052;
+}
+.button:active {
+    position:relative;
+    top:1px;
+}
+
+.content h3 {
+    display: inline-block;
+    margin-left: 10px;
+    text-transform: capitalize;
+    color: #354052;
+    width: 200px;
+}
+
+.content p {
+    display: inline-block;
+    width: 30%;
+    line-height: 30px;
+    text-transform: capitalize;
+}
+
+.fa-user {
+    color: #354052;
+}
+
+tr:hover {
+    color: #47bac1;
+}
+
+.table-dashboard tr:hover {
+    color: black;
+}
+
+
+.graph {
+    width: 1275px;
+    height: 450px;
+    display: none;
+}
+.show {
+    display: block;
+}
+.notempty .fa-superpowers,.notempty .fa-table,.notempty .fa-plus {
+    color: #354052;
+    font-size: 10px !important;
+    display: block !important;
+    margin-left: 0px;
+    height: 22%;
+    margin-top: 12px;
+    width: 150%;
+    font-weight: 900;
+}
+
+.notempty .fa-superpowers,.notempty .fa-table {
+    border-bottom: 1px solid #354052;
+}
+
+.notempty {
+    float: right;
+    width: 20px;
+    height: 105px;
+    border-left: 1px solid #354052;
+}
+
+.empty {
+    float: right;
+    width: 20px;
+    height: 105px;
+    border-left: 1px solid #354052;
+}
+
+.empty .fa-superpowers,.empty .fa-table,.empty .fa-plus {
+    color: #354052;
+    font-size: 10px !important;
+    display: block !important;
+    margin-left: 0px;
+    height: 22%;
+    margin-top: 12px;
+    width: 150%;
+    font-weight: 900;
+}
+
+.empty .fa-table,.empty .fa-plus {
+    color: grey;
+}
+
+.empty .fa-superpowers,.empty .fa-table {
+    border-bottom: 1px solid #354052;
+}
+
+.empty a, .notempty a {
+    text-decoration: none !important;
+}
+
+.legende {
+    width: calc(100%/2);
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 80px;
+}
+
+.container {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.select-header {
+    text-align: center;
+    background-color: #f3f3f3;
+}
+
+
+
+
+/* Added by Chihab Eddine On 24 Juin 2019 16:48*/
+
+/* Forms for formation */
+
+
+.form-input{
+
+
+    font-family: Oswald;
+    font-size: 24px;
+    padding: 15px;
+    color: #141414;
+    /*position: relative;*/
+    margin: 20px 60px;
+    min-width: 400px;
+    min-height: 55px;
+    background: transparent;
+    border: #6d6d6d solid;
+    border-width: 3px 2px 3px 2px;
+    /*border-radius: 15px 10px 40px 5px;*/
+    outline: 0;
+}
+
+
+.message{
+
+    position: relative;
+
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 150px;
+}
+
+
+
+/* Fin social media icons */
+
+
+.main-container{
+
+
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    /*transform: translate(-50%, -50%);*/
+    width: 100%;
+
+
+}
+
+#listContainer{
+
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    /*transform: translate(-50%, -50%);*/
+    width: 100%;
+
+
+}
+
+#msg{
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    /*transform: translate(-50%, -50%);*/
+    width: 700px;
+
+
+}
+
+tr{
+font-size: 22px;
+}
+
+

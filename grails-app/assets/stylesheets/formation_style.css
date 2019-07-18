@@ -1,0 +1,1418 @@
+/*  fonts utilisées */
+@font-face {
+    font-family: 'lato';
+    src: url(../bootstrap/fonts/Lato.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'abel';
+    src: url(../bootstrap/fonts/Abel-Regular.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'oswald';
+    src: url(../bootstrap/fonts/Oswald.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /*background-image: url("../images/bg.jpg");*/
+    background-size: cover;
+    background: var(--grad-bg-col);
+
+}
+
+
+/* Palette des couleurs */
+:root {
+    --bg-col: linear-gradient(to right, #31111c, #042938, #042938);
+    --attirante-col: rgba(101, 234, 206, 0.98);
+    --attirante2-col: rgba(111, 254, 225, 0.98);
+    --blanc-col: rgba(228, 228, 220, 0.98);
+    --fond-col : rgb(114, 128, 139);
+    --duree-col: rgb(236, 255, 239);
+    --grad-bg-col: linear-gradient(to right, #00C9FF, #3dd9ff, #3fe8b2  );
+    --icons-col: rgb(228, 255, 251);
+    --police-col :rgb(0,0,0);
+
+}
+
+
+/*  template de base    */
+
+
+/* Navigation icons */
+.topnav {
+    overflow: hidden;
+    background: var(--bg-col);
+    border: rgba(166, 166, 166, 0.26) solid;
+    border-width: 0 0 8px 0 ;
+}
+
+.topnav div {
+
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 30px;
+    text-decoration: none;
+    font-size: 20px;
+    width: 15%;
+}
+
+.topnav div:hover {
+    background-color: var(--fond-col);
+    color: black;
+}
+
+.topnav div.active {
+    background-color: #62af89;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+/* Media Pour la responsivité */
+/*   Grands écrans */
+@media screen and (max-width: 1300px) {
+    .topnav div:not(:first-child) {display: none;}
+    .topnav div.icon {
+
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive div {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+.dropbtn {
+
+    cursor: pointer;
+    border: none;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+.topnav div.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0,0,0,0.85);
+    min-width: 300px;
+    /*bottom: 70%;*/
+    /*left: 35%;*/
+    box-shadow: 10px 8px 16px 10px rgba(0, 0, 0, 0.44);
+    z-index: 1;
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    font-family: lato;
+    font-size: 24px;
+    color: var(--blanc-col);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover
+{
+    border: var(--attirante-col)  solid 3px;
+    border-radius: 25px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    position: fixed;
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    color: var(--attirante-col);
+}
+
+/* Fin navigation */
+
+
+
+
+
+
+input[type="radio"]
+{
+
+    opacity: 0;
+}
+
+
+input[type="radio"]:checked + section { display: block; }
+
+
+
+/* Cette classe est le contenu du millieu ( cours ... modules ... etc )*/
+.container {
+    display: block;
+    margin: 5% auto;
+    max-width: 800px;
+    max-height: 100%;
+    text-align: center;
+    /*border: var(--bg-col) solid 3px;*/
+    /*padding: 8px;*/
+    border-radius: 25px;
+
+}
+
+.container section {
+
+    display: none;
+    max-height: 100%;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.75);
+    color: #fff;
+
+    border-radius: 25px;
+
+
+
+
+}
+
+.container section h1 {
+    margin-bottom: 0;
+    padding: 12px;
+    font-family: Oswald;
+    color: var(--attirante-col);
+    font-weight: lighter;
+    font-size: 2.5em;
+}
+
+.container section p {
+    width: 75%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 22px;
+    font-family: sans-serif;
+}
+
+.container section img {
+    width: 100%;
+    height: 360px;
+    padding: 0px;
+    filter: contrast(120%);
+    border-radius: 15px;
+
+
+}
+
+.container section label {
+    position: relative;
+    /*display: inline-block;*/
+    cursor: pointer;
+    font-size: 1.5em;
+    padding: 10px;
+    /*bottom: 5%;*/
+    margin: 50px auto;
+
+}
+
+.seq-btn{
+
+    margin: 50px auto;
+
+}
+
+.container section label:nth-child(odd) { right: 120px; }
+
+.container section label:nth-child(even) { left: 120px; }
+
+.container section > i {
+    font-size: 6em !important;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.indexCours
+{
+    float: right;
+    padding-left:  10px;
+}
+/* Fin contenu class*/
+
+
+
+
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: solid var(--blanc-col);
+    border-width: 0 0 10px 0 ;
+    background: var(--bg-col);
+    border-radius: 25px;
+
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color: var(--blanc-col);
+    font-family: Oswald;
+    font-size: 22px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+    color: var(--bg-col);
+
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active  {
+    background-color: var(--blanc-col);
+    color: var(--bg-col);
+
+}
+
+/* Style the tab content */
+#cours_tab{
+    display: block;
+    padding: 0px;
+    margin: 10px;
+    overflow: hidden;
+    background: var(--bg-col);
+
+    border: solid #ccc;
+    border-width: 2px;
+    border-radius: 25px;
+    /*border-top: none;*/
+}
+
+#cours_tab .collapsible {
+
+
+    padding: 20px;
+    max-width: 92%;
+    border: solid #ccc;
+    border-width: 0 0 3px 0;
+    border-radius: 15px;
+
+
+
+}
+#desc_tab{
+    padding: 10px;
+    display: none;
+    margin: 20px;
+    overflow: hidden;
+    background: var(--bg-col);
+    border: 1px solid #ccc;
+    /*border-top: none;*/
+    border-radius: 30px;
+}
+
+
+#desc_tab .duree,#desc_tab .requis{
+    font-family: lato;
+    font-size: 28px;
+    color: var(--duree-col);
+    margin: 40px auto ;
+
+}
+
+#forum_tab{
+    display: none;
+    margin: 20px;
+    overflow: hidden;
+    background: var(--bg-col);
+    border: 1px solid #ccc;
+    /*border-top: none;*/
+    border-radius: 30px;
+}
+
+
+
+.requis
+{
+    font-family: lato;
+    color:  var(--blanc-col);
+    font-size: 26px;
+
+
+}
+
+.requis h2
+{
+    font-family: lato;
+    color: var(--attirante-col);
+    font-size: 36px;
+}
+
+.content .competences h1{
+    font-family: lato;
+    color: var(--blanc-col);
+    font-size: 40px;
+
+}
+
+
+.duree{
+    font-family: lato;
+    font-size: 28px;
+    color: var(--duree-col);
+
+
+}
+
+.container .petiteImg{
+    height: 350px;
+    float: left;
+    padding-bottom: 18px;
+}
+.container h1{
+    color: var(--attirante-col);
+
+}
+
+.btn {
+     text-decoration: none;
+     text-align: center;
+     margin-left: 40%;
+     margin-bottom: 15px;
+     font-family: Oswald;
+     font-size: 28px;
+     width: 150px;
+     height: 45px;
+     background: transparent;
+     color: var(--attirante-col);
+     padding: auto;
+     border: 3px solid var(--attirante-col);
+     border-radius: 25px;
+     outline:0;
+
+
+
+}
+
+
+
+.btn:hover{
+
+    background: var(--attirante-col);
+    color: var(--bg-col);
+    border: 3px solid var(--attirante-col);
+}
+
+
+.coursDispo
+{
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+    max-height: 100%;
+    text-align: center;
+
+
+
+
+
+}
+.coursDispo .titres h1
+{
+    text-align: center;
+    color: var(--police-col);
+    font-family: lato;
+    font-size: 60px;
+    margin: 50px auto;
+    padding: 60px;
+
+
+}
+
+.titres h1
+{
+    text-align: center;
+    color: var(--police-col);
+    font-family: lato;
+    font-size: 60px;
+    margin: 200px auto 100px auto;
+
+}
+
+
+
+
+
+
+
+
+
+.quizOptions
+{
+    display: inline-block;
+}
+
+.seq-btn-quiz{
+    margin-bottom: 50px;
+    color: #e9ff38;
+}
+
+.quizContainer{
+
+    border: var(--attirante-col) 2px solid;
+    margin-bottom: 40%;
+
+
+
+}
+
+
+.btnQ{
+
+
+    text-align: center;
+    /*margin-bottom: 25px;*/
+    font-family: Oswald;
+    font-size: 28px;
+    width: 180px;
+    height: 50px;
+    background: transparent;
+    padding: auto;
+    margin: 80px auto 50px auto;
+    border-width: 0 0 3px 0;
+    border: solid var(--duree-col);
+    color: var(--duree-col);
+    border-radius: 25px;
+    outline:0;
+
+
+
+}
+
+.btnQ:hover
+{
+    cursor: pointer;
+    color: var(--attirante-col);
+    border: 3px solid var(--attirante-col);
+    background: var(--bg-col);
+
+
+}
+
+
+
+.btnLink
+{
+    text-decoration: none;
+
+}
+
+
+
+
+
+
+.choiceContainer {
+    display: inline-block;
+    position: relative;
+    /*padding-left: 35px;*/
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*text-align: center;*/
+
+}
+
+/* Hide the browser's default checkbox */
+.choiceContainer  input {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    z-index: 1;
+
+
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: relative;
+    top: -48px;
+    left: 12px;
+    height: 28px;
+    width: 28px;
+    background-color: transparent;
+    border: var(--attirante-col) 2px solid;
+    border-radius: 28px;
+
+    margin: 20px 5px 50px 5px ;
+
+}
+
+/*!* On mouse-over, add a grey background color *!*/
+/*.checkmark:hover {*/
+/*    background-color: var(--attirante-col);*/
+/*}*/
+
+
+.checkmarkHidden{
+
+    width: 0;
+    height: 0;
+
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkmark input:checked + .checkmark {
+    background-color: var(--attirante-col);
+    border: solid var(--attirante-col);
+    border-width: 3px;
+    display: none;
+
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.choiceContainer input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+ .checkmark:after {
+
+    left: 8px;
+    top: 2px;
+    width: 8px;
+    height: 12px;
+    border: solid var(--attirante-col);
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#question-body{
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: var(--duree-col);
+}
+
+#questionAudio{
+
+    margin-bottom: 20px;
+    min-width: 600px;
+
+}
+
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+/*.sticky + .content {*/
+/*    padding-top: 60px;*/
+/*}*/
+
+/*   Here we're styling The forum !*/
+
+/* Div des sections ! */
+.sectionForum{
+
+    display: block;
+    margin: 5% auto;
+    max-width: 1200px;
+    max-height: 100%;
+    text-align: right;
+    border: var(--bg-col) solid 3px;
+    padding: 5px;
+    border-radius: 35px;
+    background: var(--bg-col);
+    color: var(--bg-col);
+
+}
+
+
+/* Titre des sections ! */
+
+.sectionForum .sectionTitle
+{
+
+    text-align: center;
+    /*max-width: 5%;*/
+    max-height: 100%;
+
+    /*float: left;*/
+    color: var(--blanc-col);
+    font-family: lato;
+    font-size: 48px;
+    margin: 15px 0px 20px 15px;
+    border: var(--bg-col) solid;
+    border-width: 0 0 3px 0;
+    border-radius: 12px ;
+
+
+
+}
+
+.sectionForum .topic
+{
+
+    margin: 15px;
+    padding: 5px;
+    /*border: var(--fond-col) solid 3px;*/
+    border-radius: 24px;
+    text-align: center;
+    background: var(--blanc-col);
+
+
+
+
+}
+
+
+.sectionForum .topic:hover
+{
+
+    background: var(--attirante-col);
+
+
+
+}
+
+
+.sectionForum .topic .topicTitle
+{
+    padding: 0;
+    margin: -15px 40px 15px 15px;
+    float: left;
+    color: var(--police-col);
+
+    font-family: "Oswald Regular";
+    font-size: 18px;
+    text-decoration: none;
+    /*border: #332221 solid 3px;*/
+
+
+
+}
+
+.sectionForum .topic .topicDesc
+{
+    padding: 8px;
+    text-align: center;
+    /*color: var(--blanc-col);*/
+    font-family: lato;
+    font-size: 18px;
+
+
+
+}
+
+.sectionForum .topic .sujet
+{
+    padding: 8px;
+    float: left;
+    color: var(--bg-col);
+    font-family: "Oswald Regular";
+    font-size: 22px;
+    text-decoration: none;
+    margin: 8px;
+
+
+
+}
+
+.sectionForum .topic .rightInfo
+{
+    margin: 18px;
+    float: right;
+    text-decoration: none;
+    font-size: 20px;
+
+
+}
+
+
+.sectionForum .topic .centerInfo
+{
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+
+/**/
+
+.sectionForum .discussionTitle
+{
+    margin: 5px auto 50px auto;
+    color: var(--blanc-col);
+    font-family: Oswald;
+    letter-spacing: 3px;
+    font-size: 48px;
+    text-align: center;
+
+    padding: 10px;
+
+}
+
+.sectionForum .comment
+{
+    margin: 15px 10px 25px 10px;
+    font-family: lato;
+    font-size: 21px;
+    min-height: 80px;
+    /*text-align: center;*/
+    padding: 20px;
+    border: var(--bg-col) solid;
+    border-width: 2px;
+    /*border-radius: 50px 5px 50px 5px;*/
+    border-radius: 13px;
+    background: var(--blanc-col);
+
+
+}
+
+.sectionForum .comment b
+{
+    font-size: 30px;
+    float: left;
+    font-family: lato, sans-serif;
+    /*margin-right: 50%;*/
+    margin-left: 12px;
+
+}
+
+.sectionForum .comment .topicDesc
+{
+    font-size: 20px;
+    font-family: Futura;
+
+    /*float: right;*/
+
+
+}
+.postComment{
+
+    text-align: center;
+    margin: 10px auto 10px auto;
+    padding: 10px;
+    border-radius: 15px;
+    font-family: "Oswald Regular";
+    color: var(--duree-col);
+    letter-spacing: 3px;
+    font-size: 32px;
+
+
+}
+.postComment .reponse{
+
+
+    /*text-align: center;*/
+    margin: 10px auto 10px auto;
+    padding: 10px;
+    max-width: 900px;
+    width: 90%;
+    height: 180px;
+    font-family: lato;
+    color: var(--blanc-col);
+    font-size: 26px;
+    background: rgba(0,0,0,0.3);
+    border: rgba(255, 255, 255, 0.33) 2px solid;
+    border-radius: 20px;
+    outline: 0;
+
+
+}
+
+
+.postComment .sectionNom{
+
+    display: block;
+
+    /*text-align: center;*/
+    margin: 10px auto 10px auto;
+    padding: 10px;
+    min-width: 400px;
+    width: 25%;
+    height: 70px;
+    font-family: lato;
+    color: var(--blanc-col);
+    font-size: 26px;
+    background: var(--bg-col);
+    border: #75848f 2px solid;
+    border-radius: 25px;
+    outline: 0;
+
+
+}
+ .btnPost{
+
+    text-align: center;
+    /*margin-bottom: 25px;*/
+    font-family: Oswald;
+    font-size: 28px;
+    width: 240px;
+    height: 60px;
+    padding: auto;
+    margin: 80px auto 50px auto;
+
+    border-radius: 25px;
+    outline:0;
+
+
+    color: var(--duree-col);
+    border: 3px solid var(--duree-col);
+    background: transparent ;
+
+
+}
+
+ #btnAjoutSujet{
+
+
+     color: var(--duree-col);
+     border: 3px solid var(--duree-col);
+     background: rgba(0,0,0,0.6);
+
+
+
+ }
+
+
+#btnAjoutSujet:hover{
+
+    cursor: pointer;
+    color: var(--duree-col);
+    border: 3px solid var(--duree-col);
+    background: rgba(0,0,0,0.9);
+
+
+}
+
+ .btnPost:hover
+{
+    cursor: pointer;
+    color: var(--attirante-col);
+    border: 3px solid var(--attirante-col);
+    background: #0f0f0f;
+
+
+}
+
+.btnPostContainer
+{
+    border:none;
+}
+/* PAGINATION */
+
+.pagination {
+
+    border-top: 0;
+    margin: 0px auto;
+    padding: 0.3em 0.2em;
+    text-align: center;
+    /*-moz-box-shadow: 0 0 3px 1px #AAAAAA;*/
+    /*-webkit-box-shadow: 0 0 3px 1px #AAAAAA;*/
+    /*box-shadow: 0 0 3px 1px #AAAAAA;*/
+    background: var(--bg-col);
+}
+
+.pagination a,
+.pagination .currentStep {
+    color: var(--blanc-col);
+    display: inline-block;
+    margin: 0 0.1em;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    font-family: Oswald;
+    font-size: 24px;
+}
+
+.pagination a:hover, .pagination a:focus,
+.pagination .currentStep {
+    background: var(--attirante-col);
+    color: rgba(0, 0, 0, 0.91);
+    outline: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+}
+
+.no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
+.no-borderradius .pagination .currentStep {
+    background-color: transparent;
+    color: #444444;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+.videoContainer,.imgContainer{
+    padding: 20px;
+    /*height: 550px;*/
+    width: 700px;
+    border: var(--blanc-col) solid 3px;
+    margin: 50px auto 50px auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.imgContainer img{
+
+    width: 100%;
+    height: 85%;
+
+
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+
+    cursor: pointer;
+    padding: 10px;
+    width: 95%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-family: lato;
+    font-size: 32px;
+    display: inline-block;
+    background-color: var(--bg-col);
+    color: var(--blanc-col);
+    margin: 10px;
+}
+.collapsible button
+{
+    font-family: lato;
+    font-size: 32px;
+    border: none;
+    background-color: var(--bg-col);
+    color: var(--blanc-col);
+    outline:0;
+
+
+
+
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+    color: var(--attirante-col);
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    /*background-color: #141414;*/
+    color: #ffffff;
+    font-family: lato;
+    font-size: 22px;
+}
+
+
+
+/*  mon compte !*/
+
+
+.userInfoContainer{
+
+    font-family: Oswald;
+    text-align: center;
+    display: block;
+    margin: 100px auto;
+    max-width: 600px;
+    font-size: 24px;
+    color: var(--blanc-col);
+
+    background: var(--bg-col);
+
+
+}
+.userInfoContainer ul{
+
+    text-align: center;
+
+}
+.userInfoContainer h1{
+
+    font-size: 48px;
+
+}
+.userInfoContainer h1{
+
+    font-size: 48px;
+
+}
+.userInfoContainer ul li {
+
+    list-style: none;
+    display: inline-block;
+}
+
+.userImg{
+
+    float: left;
+    margin-right: 4px;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    border: #ff1e60 3px dashed;
+    border-radius: 50%;
+    /*padding: 3px;*/
+}
+
+.userImg:hover{
+
+    transform: scale(1.3);
+    /*border: none;*/
+    cursor: pointer;
+    filter: contrast(200%);
+
+
+}
+
+
+/* Contact Us*/
+
+
+#contact{
+
+
+
+    width: 100%;
+    height: 1400px;
+    background: var(--bg-col) no-repeat ;
+    margin-top: 500px;
+    text-align: center;
+    font-family: Oswald;
+    font-size: 28px;
+    color: var(--blanc-col);
+    padding: 0;
+    background-size: cover;
+
+
+
+}
+
+
+
+.contact_titre{
+
+    margin-bottom: 150px;
+    padding-top: 30px;
+    padding-bottom: 0;
+    font-size: 80px;
+    font-family: lato,sans-serif;
+    color: var(--duree-col);
+}
+
+.contact_form{
+
+
+    padding: 0px;
+    margin-top: -120px;
+    
+}
+
+#nomForm,#prenomForm{
+
+    display: inline;
+
+
+
+}
+
+#emailForm .form-input,#sujetForm .form-input{
+
+
+    font-family: Oswald;
+    font-size: 24px;
+
+    padding: 15px;
+    color: whitesmoke;
+    position: relative;
+    margin: 20px 3px;
+    width: 32.5%;
+    /*min-width: 500px;*/
+
+
+
+}
+
+
+.form-input{
+    font-family: Oswald;
+    font-size: 24px;
+
+    padding: 15px;
+    color: whitesmoke;
+    position: relative;
+    margin: 20px 10px;
+    width: 15%;
+    min-height: 50px;
+    background: transparent;
+    border: #8fa8b3 dotted;
+    border-width: 5px;
+    /*border-radius: 5px 8px 8px 5px;*/
+    outline: 0;
+}
+
+.message{
+
+    position: relative;
+    margin: 20px auto;
+    width: 32.5%;
+    min-height: 150px;
+}
+
+
+
+
+.social{
+
+    font-size: 48px;
+    color: var(--attirante2-col);
+    margin-top: -25px;
+
+
+
+}
+.social a{
+
+    margin-left: 10px;
+    display: inline;
+
+}
+
+
+.social a i:hover{
+
+    transform: scale(1.5);
+    cursor: pointer;
+
+}
+
+
+/* Social media icons */
+#github_ico:hover{
+    color: #b97455;
+
+
+}
+#linked_ico:hover{
+    color: #00c8ff;
+
+}
+#twit_ico:hover{
+    color: #37fffc;
+
+}
+#google_ico:hover{
+    color: #ff4452;
+
+}
+#hash_ico:hover{
+    color: #00ff65;
+
+}
+#branch_ico:hover{
+    color: #f8ff00;
+
+}
+/* Fin social media icons */
+
+
+
+.rowCours{
+
+    display: block;
+    margin: 10px auto;
+    max-width: 800px;
+    height: 140px;
+    text-align: center;
+    /*border: var(--blanc-col) solid;*/
+    /*border-width: 0 0 3px 0;*/
+
+    padding: 8px;
+    border-radius: 0px 0px 25px 25px;
+
+
+    background: var(--bg-col);
+
+}
+
+.rowCours .btnLink {
+
+    float: right;
+
+    text-align: center;
+    /*margin-bottom: 25px;*/
+    font-family: Oswald;
+    font-size: 28px;
+    width: 180px;
+    height: 50px;
+    background: transparent;
+    margin:  38px 20px;
+
+    border-width: 0 0 3px 0;
+    border: solid var(--duree-col);
+    color: var(--duree-col);
+    border-radius: 25px;
+    outline:0;
+
+
+}
+
+.rowCours .btnLink:hover
+{
+    cursor: pointer;
+    color: var(--attirante-col);
+    border: 3px solid var(--attirante-col);
+    background: var(--bg-col);
+
+
+}
+
+.rowCours h1{
+
+
+    font-family: Oswald;
+    font-size: 28px;
+    float: left;
+    padding: 18px 8px;
+    color: var(--blanc-col);
+
+
+}
+
+.rowCours .imgCours  {
+
+
+    float: left;
+    width: 180px;
+    height: 120px;
+    padding: 10px;
+
+
+
+
+}
+.rowCours .imgCours img {
+
+
+    width: 100%;
+
+    border-radius: 8px;
+
+    transform: scale(0.9);
+
+    height: 100%;
+
+}
+
+.rowCours .imgCours img:hover {
+
+
+    transform: scale(1);
+    filter: contrast(200%);
+
+
+
+}
+
+
+.rowCours .duree {
+
+    float: right;
+    padding: 43px 10px;
+
+
+
+}
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.6s; /* 600ms to fade out */
+
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+

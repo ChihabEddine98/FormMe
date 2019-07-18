@@ -1,0 +1,186 @@
+
+{
+  "Page":[
+    { "URL": "",
+    "HostName": "localhost:8080",
+    "event": [
+    	{
+            "type": "keydown",
+            "typeObsel": "K_Press",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "div"
+                },
+                {
+                    "frame": "",
+                    "Selector": "#target"
+                }
+            ]
+        },
+        {
+            "type": "keyup",
+            "typeObsel": "K_Release",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "div"
+                },
+                 {
+                    "frame": "",
+                    "Selector": "#target"
+                }
+            ]
+        },
+        
+
+        {
+            "type": "mouseup",
+            "typeObsel": "M_BRelease",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "img"
+                },
+                
+                {
+                    "frame": "",
+                    "Selector": "div"
+                }
+                
+            ]
+        },
+        {
+            "type": "mousedown",
+            "typeObsel": "M_BPress",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "img"
+                },
+                
+                {
+                    "frame": "",
+                    "Selector": "div"
+                }
+                
+            ]
+        },
+        {
+          "type": "mousemove",
+          "typeObsel": "M_Move",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "#slideToUnlock"
+                },
+               
+                
+                {
+                    "frame": "",
+                    "Selector": "#slideToUnlock"
+                }
+               
+            ]
+        }
+
+
+
+
+
+    ]
+  },
+  { "URL": "",
+    "HostName": "62.210.169.239",
+   "event": [
+    	{
+            "type": "keydown",
+            "typeObsel": "K_Press",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "#centercol > table > tbody > tr > td > input"
+                },
+                {
+                    "frame": "",
+                    "Selector": "#target"
+                }
+            ]
+        },
+        {
+            "type": "keyup",
+            "typeObsel": "K_Release",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "#centercol  > table > tbody > tr > td > input"
+                },
+                 {
+                    "frame": "",
+                    "Selector": "#target"
+                }
+            ]
+        },
+        
+
+        {
+            "type": "mouseup",
+            "typeObsel": "M_BRelease",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "img"
+                },
+                
+                {
+                    "frame": "",
+                    "Selector": "#slideToUnlock"
+                }
+                
+            ]
+        },
+        {
+            "type": "mousedown",
+            "typeObsel": "M_BPress",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "img"
+                },
+                
+                {
+                    "frame": "",
+                    "Selector": "#slideToUnlock"
+                }
+                
+            ]
+        },
+        {
+          "type": "mousemove",
+          "typeObsel": "M_Move",
+            "selectors": [
+                {
+                    "frame": "",
+                    "Selector": "#shapesgame > div"
+                },
+                 {
+                    "frame": "",
+                    "Selector": "#shapesgame > div > div.formes"
+                },
+                
+                {
+                    "frame": "",
+                    "Selector": "#slideToUnlock"
+                }
+               
+            ]
+        }
+
+
+
+
+
+    ]
+  }
+]
+}
