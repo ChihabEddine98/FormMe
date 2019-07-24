@@ -12,6 +12,11 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
+
+
+			<h1>  ${typeAuth.toString().capitalize()} authentication</h1>
+			<hr>
+
 			<table class="">
 			<thead>
 					<tr>
@@ -46,7 +51,7 @@
 
 						<td>${userInstance[2]}</td>
 
-						<td><g:link controller="admin" action="authenticationResults" id="${userInstance[0].id}">Lien Auth <i class="fa fa-external-link" aria-hidden="true"></i></g:link></td>
+						<td><g:link controller="admin" action="authenticationResults"  params="[type:typeAuth]" id="${userInstance[0].id}">Lien Auth <i class="fa fa-external-link" aria-hidden="true"></i></g:link></td>
 
 
 					</tr>

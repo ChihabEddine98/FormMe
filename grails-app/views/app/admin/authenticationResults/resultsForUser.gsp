@@ -8,8 +8,10 @@
 
 <body>
 <div class="content">
+    <h1>  ${typeAuth.toString().capitalize()} authentication</h1>
+    <hr>
     <div class="fa fa-user" aria-hidden="true">
-        <h3>${userInstance.firstname} ${userInstance.lastname}</h3></div>
+        <h2>${userInstance.firstname} ${userInstance.lastname}</h2></div>
     <table class="">
         <thead>
         <tr>

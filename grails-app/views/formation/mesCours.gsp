@@ -19,7 +19,10 @@
 
 
 
-    <div class="mainPane">
+
+
+    <div class="mainPane" >
+
         <div id="mesCours">
 
         <div class="titres">
@@ -36,8 +39,6 @@
             <div id="cours_tab" class="tabcontent">
                 <g:each class="${(i % 2) == 0 ? 'even' : 'odd'}" var="cours" in="${userInstance.cours.sort({a,b-> a.id.compareTo(b.id)} )}" status="i" >
 
-
-
                     <div class="rowCours">
 
                         <g:link class="imgCours" controller="homeFormation" action="accederModules" params="[indice: cours.id]"> <img  src="${cours.imgUrl}" alt="pic"> </g:link>
@@ -48,9 +49,6 @@
 
                     </div>
 
-
-
-
                 </g:each>
             </div>
 
@@ -60,5 +58,10 @@
 
     </div>
     </div>
+
+
+
+
+
 </body>
 </html>

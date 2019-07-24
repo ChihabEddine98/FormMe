@@ -20,14 +20,7 @@
     font-style: normal;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    /*background-image: url("../images/bg.jpg");*/
-    background-size: cover;
-    background: var(--grad-bg-col);
 
-}
 
 
 /* Palette des couleurs */
@@ -36,15 +29,25 @@ body {
     --attirante-col: rgba(101, 234, 206, 0.98);
     --attirante2-col: rgba(111, 254, 225, 0.98);
     --blanc-col: rgba(228, 228, 220, 0.98);
-    --fond-col : rgb(114, 128, 139);
+    --fond-col : rgb(23, 147, 143);
     --duree-col: rgb(236, 255, 239);
-    --grad-bg-col: linear-gradient(to right, #00C9FF, #3dd9ff, #3fe8b2  );
-    --icons-col: rgb(228, 255, 251);
+    /*--grad-bg-col: linear-gradient(to right, #00C9FF, #3dd9ff, #3fe8b2  );*/
+    --grad-bg-col : linear-gradient( 109.6deg,  rgba(8,234,238,0.92) 31.7%, rgba(78,228,157,1) 89.5% );
+    /*--grad-bg-col:radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,255,147,1) 0.2%, rgb(13, 255, 242) 100.3% );*/
+    --icons-col: rgb(181, 249, 255);
     --police-col :rgb(0,0,0);
 
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    /*background-image: url("../images/bg.jpg");*/
+    background-size: cover;
 
+    background: var(--grad-bg-col);
+
+}
 /*  template de base    */
 
 
@@ -311,11 +314,11 @@ input[type="radio"]:checked + section { display: block; }
     padding: 0px;
     margin: 10px;
     overflow: hidden;
-    background: var(--bg-col);
+    background: rgba(0, 0, 0, 0.6);
 
-    border: solid #ccc;
+    /*border: solid #ccc;*/
     border-width: 2px;
-    border-radius: 25px;
+    /*border-radius: 25px;*/
     /*border-top: none;*/
 }
 
@@ -1228,7 +1231,7 @@ input[type="radio"]:checked + section { display: block; }
 .social{
 
     font-size: 48px;
-    color: var(--attirante2-col);
+    color: var(--duree-col);
     margin-top: -25px;
 
 
@@ -1283,18 +1286,18 @@ input[type="radio"]:checked + section { display: block; }
 .rowCours{
 
     display: block;
-    margin: 10px auto;
+    margin: 15px 15px;
     max-width: 800px;
     height: 140px;
     text-align: center;
-    /*border: var(--blanc-col) solid;*/
-    /*border-width: 0 0 3px 0;*/
+    border: var(--blanc-col) solid;
+    border-width: 0px 0 7px 0px;
 
     padding: 8px;
-    border-radius: 0px 0px 25px 25px;
+    border-radius: 5px;
 
 
-    background: var(--bg-col);
+    background: rgba(23, 57, 58, 0.57);
 
 }
 
@@ -1414,5 +1417,4 @@ input[type="radio"]:checked + section { display: block; }
 .closebtn:hover {
     color: black;
 }
-
 

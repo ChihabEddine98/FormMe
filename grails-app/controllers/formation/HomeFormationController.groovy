@@ -1,22 +1,14 @@
 package formation
 
-import grails.plugin.springsecurity.SpringSecurityService
-import grails.plugin.springsecurity.SpringSecurityUtils
+import authentication.diagnostic.DiagnosticService
 import grails.plugin.springsecurity.annotation.Secured
-import sun.security.provider.MD5
-import track.Comment
 import track.Cours
-import track.DiscussionThread
 import track.User
-import authentification.collect.EventService
-
-
-
 
 class HomeFormationController {
     def springSecurityService
     def EventService
-    def userAgentIdentService
+    def DiagnosticService
 
 
 
@@ -28,58 +20,58 @@ class HomeFormationController {
 
 
 
-    def similarIp(String ip1, String ip2){
-
-        double taux=0.0
-
-
-        int seq_long=longPrefixIp(ip1,ip2)
-        int total_long=longTotalIp(ip1)
-
-
-        taux=seq_long/total_long
-
-        println(" seq_long = "+seq_long)
-        println(" taux     = "+taux)
-
-
-        return taux
-
-
-
-    }
-
-
-    def longPrefixIp(String ip1,String ip2)
-    {
-        String[] ip1_tab = ip1.split("\\.")
-        String[] ip2_tab = ip2.split("\\.")
-
-        int seq_long=0
-
-
-        for (int i=0;i<ip1_tab.size();i++)
-        {
-
-            if( ip2_tab[i].equals(ip1_tab[i]))
-                seq_long++
-
-        }
-
-        return seq_long
-
-    }
-
-
-    def longTotalIp(String ip)
-    {
-        String[] ip_tab = ip.split("\\.")
-
-        int total_long= ip_tab.size()
-
-        return total_long
-
-    }
+//    def similarIp(String ip1, String ip2){
+//
+//        double taux=0.0
+//
+//
+//        int seq_long=longPrefixIp(ip1,ip2)
+//        int total_long=longTotalIp(ip1)
+//
+//
+//        taux=seq_long/total_long
+//
+//        println(" seq_long = "+seq_long)
+//        println(" taux     = "+taux)
+//
+//
+//        return taux
+//
+//
+//
+//    }
+//
+//
+//    def longPrefixIp(String ip1,String ip2)
+//    {
+//        String[] ip1_tab = ip1.split("\\.")
+//        String[] ip2_tab = ip2.split("\\.")
+//
+//        int seq_long=0
+//
+//
+//        for (int i=0;i<ip1_tab.size();i++)
+//        {
+//
+//            if( ip2_tab[i].equals(ip1_tab[i]))
+//                seq_long++
+//
+//        }
+//
+//        return seq_long
+//
+//    }
+//
+//
+//    def longTotalIp(String ip)
+//    {
+//        String[] ip_tab = ip.split("\\.")
+//
+//        int total_long= ip_tab.size()
+//
+//        return total_long
+//
+//    }
 
 
 
@@ -94,8 +86,36 @@ class HomeFormationController {
 
         Cours cours=Cours.findAllById(Integer.parseInt(params.indice)).first()
 
-       // acces cours 
-//		EventService.AccessFormation(user,cours)
+       // acces cours
+       // EventService.AccessFormation(user,cours)
+
+
+        // -------------------------------------------------------
+        //  Test de Sevice Diagnostiques here :
+        // -------------------------------------------------------
+
+        double[] poids=new double[4]
+
+        poids[0]=0.25
+        poids[1]=0.1
+        poids[2]=0.5
+        poids[3]=0.15
+
+
+        double[] normalTrusts=new double[4]
+
+        normalTrusts[0]=0.27
+        normalTrusts[1]=0.9
+        normalTrusts[2]=0.47
+        normalTrusts[3]=0.78
+
+        println(" Normal Trust KDMD  ( 0.87 ): "+DiagnosticService.NormalTrustKDMD(0.87))
+        println(" Normal Trust Env   ( 0.35,0.55): "+DiagnosticService.NormalTrustEnv(0.35,0.55))
+        println(" Degré Confiance Total   : "+DiagnosticService.DegreConfTotal(poids,normalTrusts))
+
+
+
+
         render(view : "/formation/modules",model: [userInstance:user,cours:cours] )
     }
 
@@ -151,21 +171,7 @@ class HomeFormationController {
 
 
 
-    @Secured(['ROLE_USER'])
-    def sendEmail(String email,String sujet ,String body) {
 
-        println(email+"  sujet " + sujet)
-        println(" msg "+body)
-
-//        sendMail {
-//            to "ga_benamara@esi.dz"
-//            from email
-//            subject sujet
-//            text body
-//        }
-
-//        redirect(action:'index')
-    }
 
 
 

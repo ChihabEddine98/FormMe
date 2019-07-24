@@ -41,6 +41,8 @@ class AdminController {
         def listUsers = User.list(params)
 		ArrayList<Tuple> usersTuples = new ArrayList<Tuple>()
 
+
+
 		listUsers.each {
 			int signatureAuth = 0
 			int profileAuth = 0
@@ -52,8 +54,12 @@ class AdminController {
 			usersTuples.add(userTuple)
 		}
 
-		render(view: '/app/admin/authenticationResults/userList', model:[usersTuples:usersTuples, userInstanceList: listUsers, userInstanceCount: User.count()])
+		render(view: '/app/admin/authenticationResults/userList', model:[usersTuples:usersTuples, userInstanceList: listUsers,
+																		 userInstanceCount: User.count(),
+																		  typeAuth:params.type])
 	}
+
+
 
 	@Secured(['ROLE_ADMIN'])
 	def authenticationResults(User userInstance) {
@@ -63,7 +69,9 @@ class AdminController {
 		}
 
 		List<AuthenticationResult> authenticationResults = AuthenticationResult.findAllByUserSignatureOrUserProfile(userInstance, userInstance,[max: 100, sort: "start", order: "desc", offset: 0])
-		render(view: '/app/admin/authenticationResults/resultsForUser', model:[authenticationResults: authenticationResults, userInstance: userInstance])
+		render(view: '/app/admin/authenticationResults/resultsForUser', model:[authenticationResults: authenticationResults,
+																			   userInstance: userInstance
+												                               ,typeAuth: params.type])
 	}
 
     @Secured(['ROLE_ADMIN'])

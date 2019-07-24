@@ -22,7 +22,7 @@ class DiscussionThread {
 
     String toString(){
 
-        String res=" Sujet : "+subject+" par :"+opener + " le : " + createDate +" +++++++ "
+        String res= subject+"     ##-Par : "+opener+ "          "
         return res
     }
 }

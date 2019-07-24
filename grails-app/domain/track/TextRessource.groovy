@@ -8,6 +8,6 @@ class TextRessource extends Ressource{
 
     static constraints = {
 
-        contenu  type: 'text'
+        contenu  sqltype: 'text'
     }
 }

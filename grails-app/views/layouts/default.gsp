@@ -56,14 +56,10 @@
 
 
     </div>
-
-
-
-
-
-
+%{--    <asset:javascript src="background_animation.js"/>--}%
 
 </nav>
+
 
 
 
@@ -102,6 +98,11 @@
             x.className = "topnav";
         }
     }
+
+
+
+
+
 
     </script>
 </body>

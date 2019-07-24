@@ -30,9 +30,25 @@
                     <i class="fas fa-address-book"> ${userInstance.email}</i>
                 </li>
 
-                <li>
-                    <img class="userImg" src="${userInstance.imgUrl}" alt=" Photo de profil">
-                </li>
+
+                <g:if test="${userInstance.imgUrl.isEmpty()}">
+                    <g:if test="${userInstance.sexe=='m'}">
+                        <li>
+                            <asset:image class="userImg" src="profil_pic.png" alt="photo de profil"/>
+                        </li>
+                    </g:if>
+                    <g:else>
+                        <li>
+                            <asset:image class="userImg" src="profil_pic_female.png" alt="photo de profil"/>
+                        </li>
+                    </g:else>
+                </g:if>
+                <g:else>
+                        <li>
+                            <img class="userImg" src="${userInstance.imgUrl}" alt=" Photo de profil">
+                        </li>
+                </g:else>
+
             </ul>
 
         </div>

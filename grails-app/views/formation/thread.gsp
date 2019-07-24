@@ -37,7 +37,7 @@
 
                 <b>${comment.commentBy.firstname.toLowerCase().capitalize()} ${comment.commentBy.lastname.toLowerCase().capitalize()}</b>
                 <span class="topicDesc">
-                    <g:formatDate date="${comment.createDate}" format="dd MMM yyyy hh:mma"/>
+                    <g:formatDate date="${comment.createDate}" format="dd MMM yyyy  hh:mma"/>
                 </span>
             </div>
             <p> ${comment.body} </p>

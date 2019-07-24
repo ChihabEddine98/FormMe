@@ -36,6 +36,31 @@ class EventService {
 	def CookieService
 	def grailsApplication
 	EnvironnementAndSessionApprentissageService  environnementAndSessionApprentissageService
+	def userAgentIdentService
+
+	public String generatePersistentId(){
+
+
+		// N1 : browser used
+		String n1 =userAgentIdentService.browser
+
+		// N2 : OS used
+		String n2=userAgentIdentService.operatingSystem
+
+
+
+		String pID=(n1+n2).encodeAsBase64()
+
+
+
+
+		return pID
+	}
+
+
+
+
+
 	/**
 	 * évènement d'inscription 
 	 * créer la base de trace User.id
@@ -57,6 +82,21 @@ class EventService {
 		// create primary Trace signature for envApprentissage
 		 													//	Trace signaturetrace = ktbsService.createPrimaryTrace (base,Constants.modelprimary,Constants.PrimarytraceEnvSignature,null)
 		environnementAndSessionApprentissageService.createTraceSignatureEnv (base) ;
+
+
+		// create cookie for persistentID
+
+		String pID=generatePersistentId()
+		Cookie cookiePID = new Cookie('PersisentID',pID)
+
+		CookieService.setCookie(cookiePID)
+
+
+
+
+
+
+
 	}
 	/**
 	 * évènement connect 
@@ -92,8 +132,40 @@ class EventService {
 		String ip = br.readLine(); //you get the IP as a String
 		println(" ip : "+ip)
 
+
+
+		// Get or Create Persisent ID from the cookie
+
+//		Cookie cookiePID=CookieService.getCookie('PersistentID')
+//		String pID = cookiePID.getValue()
+//
+//
+//		if(cookiePID == null)
+//		{
+//			String newPID=generatePersistentId()
+//			pID = new String(newPID.decodeBase64())
+//			Cookie newCookiePID = new Cookie('PersisentID',newPID)
+//			CookieService.setCookie(newCookiePID)
+//
+//		}
+//		else {
+//				println(" Persistent ID already exists  : "+ pID)
+//				pID = new String(pID.decodeBase64())
+//
+//		}
+
+
+
+
+
 		//cal.setTime(date.getTime())
-		
+		def jour=date.format("EEEE")
+		def heure=date.format("HH:mm")
+
+		println(" hereee jour :"+jour)
+		println(" hereee heure :"+heure)
+
+
 		JSONObject Attributes = new JSONObject();
 		Attributes.put ("@id","connect"+sessionId)
 		Attributes.put ("begin", date.getTime())
@@ -103,10 +175,14 @@ class EventService {
 		Attributes.put ("m:adressIP",ip)
 		Attributes.put ("m:persistantID","persistantID")
 		Attributes.put ("m:sessionID",sessionId)
-		Attributes.put ("m:dayOfWeek",cal.get(Calendar.DAY_OF_WEEK))
-		Attributes.put ("m:hoursOfDay",cal.get(Calendar.HOUR_OF_DAY))
+
+		Attributes.put ("m:dayOfWeek",jour)
+		Attributes.put ("m:hoursOfDay",heure)
 		
-		
+
+
+
+
 		ktbsService.createObsel(user.iduser , Constants.PrimarytraceEnv,Attributes)
 		
 		// set cookies
