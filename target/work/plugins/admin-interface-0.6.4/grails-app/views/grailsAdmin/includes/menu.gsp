@@ -1,3 +1,4 @@
+
 <section class="main-nav">
     <ul>
 
@@ -15,8 +16,19 @@
                 class="fas fa-chart-line fa-layout"
                 aria-hidden="true"></i>Dashboard</g:link>
         </li>
-        <li class="menu-nav resultsLi"><g:link controller="admin" class="resultsA" action="userList"><i class="fa fa-list fa-layout"
-                                                                                                        aria-hidden="true"></i>Auth results</g:link>
+        <li class="menu-nav resultsLi">
+            <div class="dropdown">
+                <a href="" class="dropbtn" > <g:link controller="admin" action="userList" params="[type:'biometric']"
+                                                     class="resultsA" ><i class="fa fa-list fa-layout dropdown"
+                                                                          aria-hidden="true"></i>Auth results Manuel</g:link></a>
+
+                <div class="dropdown-content">
+                    <g:link controller="admin"  action="userList" params="[type:'biometric']">Biometric</g:link>
+                    <g:link controller="admin"  action="userList" params="[type:'envApp']"> Env Session App </g:link>
+                    <g:link controller="admin"  action="userList" params="[type:'compApp']">CompApp</g:link>
+                    <a href="#">ActionApp</a>
+                </div>
+            </div>
         </li>
         <li class="menu-nav manualLi"><g:link controller="admin" class="manualA" action="manualAuthenticationIndex"><i
                 class="fas fa-sign-in-alt fa-layout"
@@ -30,4 +42,14 @@
                                                             aria-hidden="true"></i>Log out</g:link></li>
     </ul>
 </section>
+
+<section class="top-nav">
+    <h1 id="pageName"></h1>
+    <div class="user">Logged in as <sec:loggedInUserInfo field="username"/></div>
+</section>
+<script>
+    $( document ).ready(function() {
+        $("#pageName").text("Backoffice Trac");
+    });
+</script>
 

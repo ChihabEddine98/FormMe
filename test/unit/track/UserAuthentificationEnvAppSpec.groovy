@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(UserAuthentification)
-class UserAuthentificationSpec extends Specification {
+@TestFor(UserAuthentificationEnvApp)
+class UserAuthentificationEnvAppSpec extends Specification {
 
     def setup() {
     }

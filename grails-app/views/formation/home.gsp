@@ -53,7 +53,14 @@
                     </g:else>
 
                     <section>
-                        <g:link> <img  src="${cours.imgUrl}" alt="pic"> </g:link>
+
+                        <g:if test="${cours.imgUrl==null}">
+                            <asset:image  src="defaultCoursImg.jpg" alt="pic_cours"/>
+                        </g:if>
+                        <g:else>
+                             <img  src="${cours.imgUrl}" alt="pic_cours">
+                        </g:else>
+
                         <h2 class="indexCours">${(i+1).toString()+"/"+coursDispo.size()}</h2>
 
 %{--                        <asset:image class="userImg" src="${cours.imgUrl}" alt="cours"/>--}%

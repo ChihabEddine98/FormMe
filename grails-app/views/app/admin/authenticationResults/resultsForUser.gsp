@@ -8,8 +8,10 @@
 
 <body>
 <div class="content">
-    <h1>  ${typeAuth.toString().capitalize()} authentication</h1>
+
+    <h1>  ${typeModality.toString().capitalize()} authentication</h1>
     <hr>
+
     <div class="fa fa-user" aria-hidden="true">
         <h2>${userInstance.firstname} ${userInstance.lastname}</h2></div>
     <table class="">
@@ -28,9 +30,19 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${authenticationResult.id}</td>
                 <td><g:formatDate format="dd/MM/yyyy HH:mm" date="${authenticationResult.start}"/></td>
-                <td>${authenticationResult.type.name()}</td>
-                <td><g:link controller="admin" action="authenticationDetail"
-                            id="${authenticationResult.id}">${authenticationResult.obselTrusts.size()} ${authenticationResult.obselTrusts.size() > 1 ? 'obsels' : 'obsel'} <i class="fa fa-external-link" aria-hidden="true"></g:link></td>
+                <td>${authenticationResult.typeModalitie}</td>
+                <td><g:link controller="admin" action="authenticationDetail" params="[type:typeModality]"
+                            id="${authenticationResult.id}">
+                    <g:if test="${typeModality.equals("BIOMETRIC")}">
+                        ${authenticationResult.obselTrusts.size()}
+                    </g:if>
+                    <g:elseif test="${typeModality.equals("ENVAPP")}">
+                        ${authenticationResult.obselSessionTrusts.size()}
+                    </g:elseif>
+                        obsels
+                    <i class="fa fa-external-link" aria-hidden="true"/>
+                    </g:link>
+                </td>
                 <td>${authenticationResult.userSignature.email}</td>
                 <td>${authenticationResult.userProfile.email}</td>
             </tr>

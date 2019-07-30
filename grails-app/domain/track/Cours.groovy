@@ -27,7 +27,7 @@ class Cours {
 
     static constraints = {
         id(unique: true)
-        nom(nullable: false)
+        nom(nullable: false,unique: true)
         imgUrl(nullable: true)
 
     }

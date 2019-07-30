@@ -16,13 +16,14 @@ class Chapitre {
     static constraints = {
         id(unique: true)
         nom(nullable: false)
+        module(nullable: true)
 
 
     }
 
 
     String toString(){
-        return module.toString()+"-> "+nom
+        return module.toString()+"/"+nom
     }
 
 }

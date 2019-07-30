@@ -10,6 +10,7 @@
 <html>
 <head>
     <meta name="layout" content="default">
+    <script type="text/javascript" src="../assets/TraceMe_CS/collector.js"></script>
     <title> Forum</title>
 </head>
 <body>
@@ -23,8 +24,8 @@
     <g:each in="${comments}" var="comment">
         <div class="comment">
             <div>
-                <g:if test="${track.User.findByEmail(comment.commentBy.email).imgUrl.isEmpty()}">
-                    <g:if test="${track.User.findByEmail(comment.commentBy.email).sexe=='m'}">
+                <g:if test="${comment.commentBy.imgUrl.isEmpty()}">
+                    <g:if test="${comment.commentBy.sexe=='m'}">
                         <asset:image class="userImg" src="profil_pic.png" alt="photo de profil"/>
                     </g:if>
                     <g:else>

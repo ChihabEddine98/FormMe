@@ -2,10 +2,7 @@ package formation
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.Validateable
-import org.springframework.web.multipart.MultipartFile
-import org.springframework.web.multipart.MultipartHttpServletRequest
-import org.springframework.web.multipart.MultipartRequest
-import org.springframework.web.multipart.commons.CommonsMultipartFile
+
 import track.Comment
 import track.DiscussionThread
 import track.Section
@@ -24,8 +21,12 @@ class ForumController {
     {
 		//consult forum
 		User user = springSecurityService.currentUser
-//		EventService.ConsultForum (user)
-        render(view: "/formation/forumHome",model: [sections: Section.listOrderByTitle()])
+		//EventService.ConsultRessource (user)
+//		//EventService.ConsultForum (user)
+
+        params.max = 2
+
+        render(view: "/formation/forumHome",model: [sections: Section.list()])
 
     }
 

@@ -109,31 +109,29 @@ class HomeFormationController {
         normalTrusts[2]=0.47
         normalTrusts[3]=0.78
 
-        println(" Normal Trust KDMD  ( 0.87 ): "+DiagnosticService.NormalTrustKDMD(0.87))
-        println(" Normal Trust Env   ( 0.35,0.55): "+DiagnosticService.NormalTrustEnv(0.35,0.55))
-        println(" Degré Confiance Total   : "+DiagnosticService.DegreConfTotal(poids,normalTrusts))
+//        println(" Normal Trust KDMD  ( 0.87 ): "+DiagnosticService.NormalTrustKDMD(0.87))
+//        println(" Normal Trust Env   ( 0.35,0.55): "+DiagnosticService.NormalTrustEnv(0.35,0.55))
+//        println(" Degré Confiance Total   : "+DiagnosticService.DegreConfTotal(poids,normalTrusts))
 
 
 
 
         render(view : "/formation/modules",model: [userInstance:user,cours:cours] )
     }
-
-
+//    def  userAgentIdentService
+//
 //    String generatePersistentId(){
 //
 //
 //        // N2 : browser used
-//        String n1 =userAgentIdentService.browser
+//        String n1 =userAgentIdentService.browser+userAgentIdentService.browserVersion
 //
 //        // N4 : OS used
-//        String n2=userAgentIdentService.operatingSystem
+//        String n2=System.getProperty("os.name")+System.getProperty("os.version")
 //
 //
 //
-//        String pID=(n1+n2).encodeAsBase64()
-//
-//
+//        String pID=(n1+" "+n2).encodeAsBase64()
 //
 //
 //        return pID

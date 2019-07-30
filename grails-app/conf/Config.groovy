@@ -199,6 +199,16 @@ grails.plugin.admin.domains = [
 
 ]
 
+
+grails.validateable.packages = ['track.Cours']
+
+grails.plugin.admin.domain.Module = {
+    widget "Duree", help:"Has the room a blackboard?"
+}
+//grails.plugin.admin.domain.Chapitre = {
+//    widget "ressource", "net.kaleidos.plugins.admin.widget.relation.RelationSelectWidget"
+//}
+
 //grails.plugin.admin.domain.InfoCours = "admin.InfosCours"
 //grails.plugin.admin.domain.InfosCours = {
 //    list includes: ["domaine", "duree", "requis", "competences"]

@@ -7,11 +7,11 @@ import javax.servlet.http.Cookie
 
 import org.springframework.web.context.request.RequestContextHolder
 
-import authentication.decision.DecisionService
+
 
 class GameController {
 	def springSecurityService
-	DecisionService  decisionService
+	
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     //@Secured('ROLE_USER')
     def game() { 

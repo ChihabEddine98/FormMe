@@ -39,7 +39,19 @@
 
                 <div class="rowCours">
 
-                    <g:link class="imgCours" controller="modules" action="accederChapitres" params="[indice : module.id]"> <img  src="${cours.imgUrl}" alt="pic"> </g:link>
+
+                    <g:if test="${cours.imgUrl==null}">
+                        <g:link class="imgCours" controller="modules" action="accederChapitres" params="[indice : module.id]">
+                            <asset:image  src="defaultCoursImg.jpg" alt="pic_cours"/>
+                        </g:link>
+                    </g:if>
+                    <g:else>
+                        <g:link class="imgCours" controller="modules" action="accederChapitres" params="[indice : module.id]">
+                            <img  src="${cours.imgUrl}" alt="pic">
+                        </g:link>
+                    </g:else>
+
+%{--                    <g:link class="imgCours" controller="modules" action="accederChapitres" params="[indice : module.id]"> <img  src="${cours.imgUrl}" alt="pic"> </g:link>--}%
                     <h1>${module.nom.capitalize()}</h1>
                     <g:link  class="btnLink" controller="modules" action="accederChapitres" params="[indice : module.id]">
                         Acceder

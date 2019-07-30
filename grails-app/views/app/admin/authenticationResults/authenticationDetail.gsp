@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<div class="content">
+<div class="contentObsel">
     <p>
         Signature User : <br>
         ${authenticationResult.userSignature.firstname} ${authenticationResult.userSignature.lastname}
@@ -24,9 +24,9 @@
         ${authenticationResult.userProfile.firstname} ${authenticationResult.userProfile.lastname}
     </p>
 
-    <button id="button" class="button">Afficher le graph Obseltrust.trust</button>
+    <button id="button" class="buttonObsel">Afficher le graph Obseltrust.trust</button>
     <g:link controller="admin" action="calculateAuthenticationStatistics" id="${authenticationResult.id}">
-        <button id="buttonStats" class="button">Calculer les stats</button>
+        <button id="buttonStats" class="buttonObsel">Calculer les stats</button>
     </g:link>
 
     <h4>
@@ -41,7 +41,7 @@
         <h4>ANIA : ${authenticationResult?.ania}</h4>
         <h4>ANGA : ${authenticationResult?.anga}</h4>
     </p>
-
+  
     <div id="graph" class="graph"></div>
     <table>
         <thead>
@@ -70,7 +70,7 @@
                 <td>${obselTrust.end}</td>
                 <td>${obselTrust.distance}</td>
                 <td>${obselTrust.trust}</td>
-            </tr>>
+            </tr>
         </g:each>
         </tbody>
     </table>

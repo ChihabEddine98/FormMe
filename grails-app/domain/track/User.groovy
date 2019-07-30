@@ -25,8 +25,8 @@ class User implements Serializable {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-	UserAuthentification userauthentification
-
+	//UserAuthentification userauthentification
+	UserAuthentificationEnvApp userAuthentificationEnvApp
 	String imgUrl=""
 	char sexe='m'
 
@@ -80,7 +80,7 @@ class User implements Serializable {
 		password blank: false, nullable: false, password: true, matches: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+\$).{8,}\$"
 		firstname blank: false
 		lastname blank: false
-		userauthentification nullable: true
+		userAuthentificationEnvApp nullable: true
 		imgUrl nullable: true
 
 

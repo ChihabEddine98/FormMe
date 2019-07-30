@@ -18,6 +18,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
     <g:layoutHead/>
 </head>
 
@@ -25,6 +29,13 @@
     <section class="main-nav">
         <ul>
 
+            <li class="menu-nav homeLi"><g:link controller="admin"  class="homeA"><i
+                    class="fa fa-home fa-layout"
+                    aria-hidden="true"></i>Home</g:link>
+            </li>
+%{--            <li class="menu-nav"><a class="home" href="${createLink(uri: '/')}"><i class="fa fa-home fa-layout"--}%
+%{--                                                                                   aria-hidden="true"></i><g:message--}%
+%{--                    code="default.home.label"/></a></li>--}%
 
             <li class="menu-nav"><g:link controller="admin" class="create" action="gestionUsers"><i class="fa fa-user-plus fa-layout"
                                                                                                     aria-hidden="true"></i><g:message
@@ -35,20 +46,35 @@
                     aria-hidden="true"></i>Formation</g:link>
             </li>
 
-            <li class="menu-nav dashLi"><g:link controller="admin" class="dashA"><i
+            <li class="menu-nav dashLi"><g:link controller="admin" action="dashBoard" class="dashA"><i
                     class="fas fa-chart-line fa-layout"
                     aria-hidden="true"></i>Dashboard</g:link>
             </li>
-            <li class="menu-nav resultsLi">
+            <li class="menu-nav resultsAMLi">
                 <div class="dropdown">
-                    <a href="" class="dropbtn" > <g:link controller="admin" action="userList" params="[type:'biometric']"
-                                                         class="resultsA" ><i class="fa fa-list fa-layout dropdown"
+                    <a href="" class="dropbtn" > <g:link controller="admin" action="userList" params="[type:'BIOMETRIC',typeAuth:'Manuel']"
+                                                         class="resultsAM" ><i class="fa fa-list fa-layout dropdown"
                                                                                                                  aria-hidden="true"></i>Auth results Manuel</g:link></a>
 
                     <div class="dropdown-content">
-                        <g:link controller="admin"  action="userList" params="[type:'biometric']">Biometric</g:link>
-                        <g:link controller="admin"  action="userList" params="[type:'envApp']"> Env Session App </g:link>
-                        <g:link controller="admin"  action="userList" params="[type:'compApp']">CompApp</g:link>
+                        <g:link controller="admin"  action="userList" params="[type:'BIOMETRIC',typeAuth:'Manuel']">Biometric</g:link>
+                        <g:link controller="admin"  action="userList" params="[type:'ENVAPP',typeAuth:'Manuel']"> Env Session App </g:link>
+                        <g:link controller="admin"  action="userList" params="[type:'COMPAPP',typeAuth:'Manuel']">CompApp</g:link>
+                        <a href="#">ActionApp</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="menu-nav resultsASLi">
+                <div class="dropdown">
+                    <a href="" class="dropbtn" > <g:link controller="admin" action="userList" params="[type:'BIOMETRIC',typeAuth:'System']"
+                                                         class="resultsAS" ><i class="fa fa-list fa-layout dropdown"
+                                                                              aria-hidden="true"></i>Auth results System</g:link></a>
+
+                    <div class="dropdown-content">
+                        <g:link controller="admin"  action="userList" params="[type:'BIOMETRIC',typeAuth:'System']">Biometric</g:link>
+                        <g:link controller="admin"  action="userList" params="[type:'ENVAPP',typeAuth:'System']"> Env Session App </g:link>
+                        <g:link controller="admin"  action="userList" params="[type:'COMPAPP',typeAuth:'System']">CompApp</g:link>
                         <a href="#">ActionApp</a>
                     </div>
                 </div>
@@ -57,9 +83,9 @@
                     class="fas fa-sign-in-alt fa-layout"
                     aria-hidden="true"></i>Manual Auth</g:link>
             </li>
-            <li class="menu-nav"><a class="home" href="${createLink(uri: '/')}"><i class="fa fa-home fa-layout"
+            <li class="menu-nav"><a class="home" href="${createLink(uri: '/')}"><i class="fas fa-graduation-cap fa-layout"
                                                                                    aria-hidden="true"></i><g:message
-                    code="default.home.label"/></a></li>
+                    code="default.testFormation.label"/></a></li>
 
             <li class="menu-nav"><g:link controller="logout"><i class="fas fa-power-off fa-layout"
                                                                 aria-hidden="true"></i>Log out</g:link></li>

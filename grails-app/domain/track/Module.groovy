@@ -19,6 +19,8 @@ class Module {
     static constraints = {
         id(unique: true)
         nom(nullable: false)
+        cours(nullable: true)
+
     }
 
     static mapping = {
@@ -28,7 +30,7 @@ class Module {
 
     String toString(){
 
-        return cours.toString()+" -> "+nom
+        return cours.toString()+"/"+nom
     }
 
 }

@@ -3,8 +3,9 @@ package track
 class AuthenticationResult implements Serializable {
 
     Date start
-    AuthenticationType type
-
+    String typeModalitie = null
+	String typeAuth = null 
+	String sessionId = "" ;
     Float distanceMean =0
     Float distanceMedian =0
     Float distanceVariance =0
@@ -12,20 +13,21 @@ class AuthenticationResult implements Serializable {
     Float trustTreshold =0
     Float ania =0
     int anga =0
-
-    static hasMany = [ obselTrusts : ObselTrust ]
+    Float trustBiometric = 0
+	
+    static hasMany = [ obselTrusts : ObselTrust , obselSessionTrusts : ObselSessionTrust ]
     static belongsTo = [userSignature: User, userProfile: User]
 
-    enum AuthenticationType {
-        CLASSIC,CLASSIC55, DYNAMIC, CLASSIC1, CLASSIC2, CLASSIC3, CLASSIC51, CLASSIC52, CLASSIC53, CLASSIC54,CLASSIC15,CLASSIC6,CLASSIC12
-
-        /**
-         * @return String : the key for translation (see keys in message.properties)
-         */
-        String getMessageCode() {
-            return "authenticationResult.authenticationType."+name()
-        }
-    }
+//    enum AuthenticationType {
+//       BIOMETRIC, ENVAPP, CLASSIC
+//
+//        /**
+//         * @return String : the key for translation (see keys in message.properties)
+//         */
+//        String getMessageCode() {
+//            return "authenticationResult.authenticationType."+name()
+//        }
+//    }
 
     static constraints = {
 
@@ -33,7 +35,8 @@ class AuthenticationResult implements Serializable {
 
     static mapping = {
         version false // No concurrent access possible in writing because no update possible (only write once)
-        type sqlType: 'varchar(30)'
+        typeModalitie sqlType: 'varchar(30)'
+		typeAuth sqlType: 'varchar(30)'
 		ania defaultValue: "0"
 		anga defaultValue: "0"
 		trustTreshold defaultValue: "0"
@@ -41,6 +44,8 @@ class AuthenticationResult implements Serializable {
 		distanceMedian defaultValue: "0"
 		distanceVariance defaultValue: "0"
 		distanceStandardDeviation defaultValue: "0"
+		trustBiometric defaultValue: "0"
+		sessionId nullable : true 
 		
     }
 	int sizeObselTrust (){

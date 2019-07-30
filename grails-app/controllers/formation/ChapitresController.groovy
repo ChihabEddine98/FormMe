@@ -44,11 +44,38 @@ class ChapitresController {
 
         questions.eachWithIndex{ question,i ->
 
-            if (question.answer.equals(params["question$i"]))
+            if (!question.answer.isEmpty())
             {
-                score++
-
+                if (question.answer.equals("1"))
+                {
+                    if (question.sugg1.equals(params["question$i"]))
+                    {
+                        score++
+                    }
+                }
+                if (question.answer.equals("2"))
+                {
+                    if (question.sugg2.equals(params["question$i"]))
+                    {
+                        score++
+                    }
+                }
+                if (question.answer.equals("3"))
+                {
+                    if (question.sugg3.equals(params["question$i"]))
+                    {
+                        score++
+                    }
+                }
+                if (question.answer.equals("4"))
+                {
+                    if (question.sugg4.equals(params["question$i"]))
+                    {
+                        score++
+                    }
+                }
             }
+
 
         }
 

@@ -26,12 +26,12 @@
 
 
 
-        <div>
 
-            <section class="top-nav">
-                <h1 id="pageName"></h1>
-                <div class="user">Logged in as <sec:loggedInUserInfo field="username"/></div>
-            </section>
+
+%{--            <section class="top-nav">--}%
+%{--                <h1 id="pageName"></h1>--}%
+%{--                <div class="user">Logged in as <sec:loggedInUserInfo field="username"/></div>--}%
+%{--            </section>--}%
             <g:include action="menu" params="[slug: params.slug]"/>
             <g:layoutBody/>
 
@@ -56,7 +56,7 @@
 
 
 
-        </div>
+
 
 
 

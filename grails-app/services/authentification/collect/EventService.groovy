@@ -1,8 +1,7 @@
 package authentification.collect
 
 import ktbs.KtbsService;
-import authentication.profil.ProfileUserService;
-import authentication.signature.SignatureUserService;
+
 import grails.plugin.cookie.CookieService
 import grails.transaction.Transactional
 import track.Comment
@@ -14,13 +13,14 @@ import track.Cours
 import com.ignition_factory.ktbs.bean.Base
 import com.ignition_factory.ktbs.bean.Trace
 import authentication.modality.EnvironnementAndSessionApprentissageService
-import authentication.profil.ProfileUserService
-import authentication.signature.SignatureUserService
+
 import ktbs.KtbsService
 import defaults.Constants;
 import org.json.JSONObject
 import org.springframework.web.context.request.RequestAttributes
 import org.springframework.web.context.request.RequestContextHolder
+import track.UserRole
+
 import javax.servlet.http.Cookie
 
 import grails.plugin.cookie.CookieService
@@ -30,8 +30,7 @@ import authentication.modality.KDandMDModalityService
 class EventService {
 	
 	KtbsService ktbsService
-	SignatureUserService  signatureUserService
-	ProfileUserService profileUserService
+	
 	def KDandMDModalityService 
 	def CookieService
 	def grailsApplication
@@ -41,20 +40,19 @@ class EventService {
 	public String generatePersistentId(){
 
 
-		// N1 : browser used
-		String n1 =userAgentIdentService.browser
+		// N2 : browser used
+		String n1 =userAgentIdentService.browser+userAgentIdentService.browserVersion
 
-		// N2 : OS used
-		String n2=userAgentIdentService.operatingSystem
-
-
-
-		String pID=(n1+n2).encodeAsBase64()
+		// N4 : OS used
+		String n2=System.getProperty("os.name")+System.getProperty("os.version")
 
 
+
+		String pID=(n1+" "+n2).encodeAsBase64()
 
 
 		return pID
+
 	}
 
 
@@ -71,25 +69,32 @@ class EventService {
 	 * @return
 	 */
 	def inscriptionEvent(User userInstance) {
-	
-		// create Base de trace user
-		Base base = ktbsService.createBase (userInstance.iduser, "base user ")
-		// create primary Trace for envApprentissage
-		Trace primarytrace = ktbsService.createPrimaryTrace (base,Constants.modelprimary,Constants.PrimarytraceEnv,null)
-		// create profile Trace for envApprentissage
-															//	profileUserService.createTraceProfilEnv (base, primarytrace, Constants.PrimarytraceEnvProfil)
-		 environnementAndSessionApprentissageService.createTraceProfilEnv (base, primarytrace)
-		// create primary Trace signature for envApprentissage
-		 													//	Trace signaturetrace = ktbsService.createPrimaryTrace (base,Constants.modelprimary,Constants.PrimarytraceEnvSignature,null)
-		environnementAndSessionApprentissageService.createTraceSignatureEnv (base) ;
 
 
-		// create cookie for persistentID
+		boolean estAdmin= UserRole.findByUser(userInstance).role.authority.equals("ROLE_ADMIN")
 
-		String pID=generatePersistentId()
-		Cookie cookiePID = new Cookie('PersisentID',pID)
+		if (!estAdmin)
+		{
+			// create Base de trace user
+			Base base = ktbsService.createBase (userInstance.iduser, "base user ")
+			// create primary Trace for envApprentissage
+			Trace primarytrace = ktbsService.createPrimaryTrace (base,Constants.modelprimary,Constants.PrimarytraceEnv,null)
+			// create profile Trace for envApprentissage
+			//	profileUserService.createTraceProfilEnv (base, primarytrace, Constants.PrimarytraceEnvProfil)
+			environnementAndSessionApprentissageService.createTraceProfilEnv (base, primarytrace)
+			// create primary Trace signature for envApprentissage
+			//	Trace signaturetrace = ktbsService.createPrimaryTrace (base,Constants.modelprimary,Constants.PrimarytraceEnvSignature,null)
+			environnementAndSessionApprentissageService.createTraceSignatureEnv (base) ;
 
-		CookieService.setCookie(cookiePID)
+
+			// create cookie for persistentID
+
+			String pID=generatePersistentId()
+			Cookie cookiePID = new Cookie('PersisentID',pID)
+
+			CookieService.setCookie(cookiePID)
+		}
+
 
 
 
@@ -111,14 +116,6 @@ class EventService {
 		CookieService cookieService
 		// get sessionID
 		def sessionId = currentRequest.getSessionId();
-		// get Adress IP
-		
-		//def AdressIP = RequestContextHolder.currentRequestAttributes().getRequest().getRemoteAddr()
-	//	String ipAddr = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest().getRemoteAddr();
-		//def request = (HttpServletRequest) event..getServletRequest();
-		//String ipAddr2 = request.getRemoteAddr();
-	//	println ipAddr ;
-		//Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
 		
 		// create obsel connect
 		Date date = new Date()
@@ -136,23 +133,26 @@ class EventService {
 
 		// Get or Create Persisent ID from the cookie
 
-//		Cookie cookiePID=CookieService.getCookie('PersistentID')
-//		String pID = cookiePID.getValue()
-//
-//
-//		if(cookiePID == null)
-//		{
-//			String newPID=generatePersistentId()
-//			pID = new String(newPID.decodeBase64())
-//			Cookie newCookiePID = new Cookie('PersisentID',newPID)
-//			CookieService.setCookie(newCookiePID)
-//
-//		}
-//		else {
-//				println(" Persistent ID already exists  : "+ pID)
-//				pID = new String(pID.decodeBase64())
-//
-//		}
+		Cookie cookiePID=CookieService.getCookie('PersistentID')
+		String pID
+
+
+
+
+		if(cookiePID==null)
+		{
+			String newPID=generatePersistentId()
+			pID = new String(newPID.decodeBase64())
+			Cookie newCookiePID = new Cookie('PersisentID',newPID)
+			CookieService.setCookie(newCookiePID)
+
+		}
+		else {
+	    pID = cookiePID.getValue()
+				println(" Persistent ID already exists  : "+ pID)
+				pID = new String(pID.decodeBase64())
+
+		}
 
 
 
@@ -173,7 +173,7 @@ class EventService {
 		Attributes.put ("@type","m:connect")
 		// Ajouter IP here !
 		Attributes.put ("m:adressIP",ip)
-		Attributes.put ("m:persistantID","persistantID")
+		Attributes.put ("m:persistantID",pID)
 		Attributes.put ("m:sessionID",sessionId)
 
 		Attributes.put ("m:dayOfWeek",jour)

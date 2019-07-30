@@ -41,7 +41,18 @@
 
                     <div class="rowCours">
 
-                        <g:link class="imgCours" controller="homeFormation" action="accederModules" params="[indice: cours.id]"> <img  src="${cours.imgUrl}" alt="pic"> </g:link>
+                        <g:if test="${cours.imgUrl==null}">
+                            <g:link class="imgCours" controller="homeFormation" action="accederModules" params="[indice: cours.id]">
+                                <asset:image  src="defaultCoursImg.jpg" alt="pic_cours"/>
+                            </g:link>
+
+                        </g:if>
+                        <g:else>
+                            <g:link class="imgCours" controller="homeFormation" action="accederModules" params="[indice: cours.id]">
+                                <img  src="${cours.imgUrl}" alt="pic_cours">
+                            </g:link>
+                        </g:else>
+%{--                        <g:link class="imgCours" controller="homeFormation" action="accederModules" params="[indice: cours.id]"> <img  src="${cours.imgUrl}" alt="pic"> </g:link>--}%
                         <h1>Cours de ${cours.nom.capitalize()}</h1>
                         <g:link  class="btnLink" controller="homeFormation" action="accederModules" params="[indice: cours.id]">
                             Acceder

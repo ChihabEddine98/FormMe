@@ -22,8 +22,9 @@ import org.springframework.security.authentication.event.InteractiveAuthenticati
 import org.springframework.security.core.Authentication
 import org.springframework.web.context.request.RequestContextHolder
 import defaults.Constants;
+import track.Cours
 import track.User
-
+import authentication.modality.KDandMDModalityService
 
 
 
@@ -31,6 +32,7 @@ public class MyLogoutEventListener implements ApplicationListener<SessionDestroy
 	def KtbsService
 	def EventService
 	def EnvironnementAndSessionApprentissageService
+	def KDandMDModalityService
    // @Override 
 	 public void onApplicationEvent(SessionDestroyedEvent event){
 		 
@@ -52,22 +54,17 @@ public class MyLogoutEventListener implements ApplicationListener<SessionDestroy
              user = User.findByEmail(ud.getUsername());
 		 }
 		 EventService.disconnectEvent (currentRequest, user)
-		 EnvironnementAndSessionApprentissageService.ClusteringAndCalculTrustEnvApp(user)
-		 
-//		 // get sessionID
-//		  def sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
-//		 println (sessionId)
-//		 // create obsel connect
-//		 
-//		 JSONObject Attributes = new JSONObject();
-//		 Attributes.put ("@id","disconnect"+sessionId)
-//		 Attributes.put ("begin",date.getTime())
-//		 Attributes.put ("end",date.getTime())
-//		 Attributes.put ("@type","m:disconnect")
-//		 Attributes.put ("m:sessionID",sessionId)
-//		 
-//		 KtbsService.createObsel(user.iduser , Constants.PrimarytraceEnv,Attributes)
 		
+		 
+		 /** calculer trust ppour chaque modalité */
+		  /* AuthApprentissage */
+		// EnvironnementAndSessionApprentissageService.ClusteringAndCalculTrustEnvApp(user,currentRequest)
+		
+		 
+		  /** Auth KDAnd MD**/
+		 Cours cours = Cours.findById ("1")
+		 KDandMDModalityService.CalculTrustKDandMD(user , cours , currentRequest)
+		 	
 		 
 	}
 	   

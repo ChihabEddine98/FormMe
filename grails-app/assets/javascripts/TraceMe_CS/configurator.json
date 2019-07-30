@@ -10,11 +10,7 @@
             "selectors": [
                 {
                     "frame": "",
-                    "Selector": "div"
-                },
-                {
-                    "frame": "",
-                    "Selector": "#target"
+                    "Selector": "textarea"
                 }
             ]
         },
@@ -24,11 +20,7 @@
             "selectors": [
                 {
                     "frame": "",
-                    "Selector": "div"
-                },
-                 {
-                    "frame": "",
-                    "Selector": "#target"
+                    "Selector": "textarea"
                 }
             ]
         },
@@ -72,13 +64,7 @@
             "selectors": [
                 {
                     "frame": "",
-                    "Selector": "#slideToUnlock"
-                },
-               
-                
-                {
-                    "frame": "",
-                    "Selector": "#slideToUnlock"
+                    "Selector": "section"
                 }
                
             ]

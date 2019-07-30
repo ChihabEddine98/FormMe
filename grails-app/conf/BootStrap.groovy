@@ -1,4 +1,5 @@
 import track.Comment
+import track.Cours
 import track.DiscussionThread
 import track.Quiz
 import track.Role
@@ -26,6 +27,8 @@ class BootStrap {
     def init = { servletContext ->
 
 		GenerateUUI  generateuui = new GenerateUUI();
+		
+		
 		Role adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role('ROLE_ADMIN').save()
 		Role userRole = Role.findByAuthority('ROLE_USER') ?: new Role('ROLE_USER').save()
 		User user = User.findByEmail("test@mail.com") ?: new User(firstname : 'test', lastname : 'test', email : 'test@mail.com', password:'Mot2passe', iduser : generateuui.generate("test", "test")).save()
@@ -33,11 +36,11 @@ class BootStrap {
 	   	UserRole.findByUserAndRole(user,adminRole) ?: new UserRole(user,adminRole).save()
 
 		// Add other default users
-		if(!(user = User.findByEmail("nfourniol@ignition-factory.com"))) {
-			user = new User(firstname : 'Nicolas', lastname : 'FOURNIOL', email : 'nfourniol@ignition-factory.com', password:'Nicolas1')
-			userService.createUser(user)
-		}
-		UserRole.findByUserAndRole(user,adminRole) ?: userRoleService.assignRole ("ROLE_ADMIN", user)
+//		if(!(user = User.findByEmail("nfourniol@ignition-factory.com"))) {
+//			user = new User(firstname : 'Nicolas', lastname : 'FOURNIOL', email : 'nfourniol@ignition-factory.com', password:'Nicolas1')
+//			userService.createUser(user)
+//		}
+//		UserRole.findByUserAndRole(user,adminRole) ?: userRoleService.assignRole ("ROLE_ADMIN", user)
 
 //		if ( Section.count() == 0 ) { // create data if no forum data found
 //

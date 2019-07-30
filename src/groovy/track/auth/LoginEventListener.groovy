@@ -23,7 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes
 import defaults.Constants;
 import track.User
 import track.UserRole
-import authentication.profil.ProfileUserService
+
 import authentication.modality.EnvironnementAndSessionApprentissageService
 import authentification.collect.EventService
 class LoginEventListener implements ApplicationListener<InteractiveAuthenticationSuccessEvent> {

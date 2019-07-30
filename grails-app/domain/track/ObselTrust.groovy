@@ -17,7 +17,7 @@ class ObselTrust implements Serializable {
 
     static mapping = {
         version false // No concurrent access possible in writing because no update possible (only write once)
-        idAction sqlType: 'varchar(170)'
+        idAction sqlType: 'varchar(250)'
         typeAction sqlType: 'varchar(50)'
     }
 

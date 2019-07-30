@@ -18,7 +18,6 @@
 
 
 
-
 <g:each in="${sections}" var="section">
     <div class="sectionForum">
         <div class="sectionTitle">${section.title}</div>
@@ -39,7 +38,6 @@
         </g:each>
     </div>
 </g:each>
-
 
 
 

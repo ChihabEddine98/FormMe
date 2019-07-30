@@ -9,7 +9,9 @@
 			dataSource {
 				pooled = true
 				dbCreate = "update" // empty for database-migration plugin
-				url = "jdbc:mysql://127.0.0.1:3306/tractestbench?autoReconnect=true&useSSL=false"
+
+				url = "jdbc:mysql://127.0.0.1:3306/tracFormation?autoReconnect=true&useSSL=false"
+
 				//url = "jdbc:mysql://localhost/tractestbench?autoReconnect=true&useSSL=false"
 				driverClassName = "com.mysql.jdbc.Driver"
 				dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
@@ -30,7 +32,8 @@
 			dataSource {
 				pooled = true
 				dbCreate = "update"  // empty for database-migration plugin
-				url = "jdbc:mysql://localhost/tractestbench?autoReconnect=true&useSSL=false"
+				url = "jdbc:mysql://localhost/tracFormation?autoReconnect=true&useSSL=false"
+
 				driverClassName = "com.mysql.jdbc.Driver"
 				username = "root"
 				password = ""
@@ -62,13 +65,14 @@
 			dataSource {
 				pooled = true
 				dbCreate = ""  // empty for database-migration plugin
-				url = "jdbc:mysql://localhost/tractestbench"
+				url = "jdbc:mysql://localhost/tracFormation3"
+
 				driverClassName = "com.mysql.jdbc.Driver"
 				username = "root"
-				password = ""
+				password = "root"
 			}
 		}
-		
+		 
 		
 	}
 	
