@@ -4,6 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.Validateable
 
 import track.Comment
+import track.Cours
 import track.DiscussionThread
 import track.Section
 import track.Topic
@@ -24,9 +25,10 @@ class ForumController {
 		//EventService.ConsultRessource (user)
 //		//EventService.ConsultForum (user)
 
-        params.max = 2
+        params.max=2
+        def sectionList= Section.list(params)
 
-        render(view: "/formation/forumHome",model: [sections: Section.list()])
+        render(view: "/formation/forumHome",model: [sections: sectionList])
 
     }
 

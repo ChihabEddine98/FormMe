@@ -59,18 +59,20 @@
 
         </div>
 
-        <g:hiddenField name="type" value="${type}"></g:hiddenField>
+
+
 
         <g:if test="${type.equals("txt")}">
 
             <% def ressource=(track.TextRessource) ressourceInstance%>
 
 
-
             <div class="champ">
                 <label> Contenu   </label>
                 <g:textArea  class="form-input message" name="contenu"/>
             </div>
+
+            <g:hiddenField name="type" value="${type}"></g:hiddenField>
 
         </g:if>
         <g:elseif test="${type.equals("media")}">
@@ -79,13 +81,12 @@
 
             <div class="champ">
                 <label> Url   </label>
-                <g:textField  class="form-input" type="text" name="urlRessource" />
+                <g:textField  class="form-input" type="text" name="url" />
             </div>
 
             <div class="champ">
                 <h3> Format*  </h3>
-                <g:select class="form-input" name="format" from="['audio','img','video']"
-
+                <g:select class="form-input" name="type" from="['audio','img','video']"
 
                 />
 
@@ -102,15 +103,25 @@
                 <g:textField  class="form-input" type="text" name="nomQuiz" />
             </div>
 
+            <g:hiddenField name="type" value="${"quiz"}"></g:hiddenField>
+
         </g:elseif>
 
 
 
 
-        <div class="champ col-md-4 col-sm-4">
-            <g:actionSubmit value="Sauvegarder" type="button" class="button btn-success"
+        <div class="champ col-md-5 col-sm-4">
+            <g:link class="button btn-danger" controller="admin" action="listRessource" params="[type:type]">
+                <i class="fas fa-backward" > <span style="font-family: Futura;"> ${type.toUpperCase()} Ressources</span> </i>
+            </g:link>
+        </div>
+
+        <div class="champ col-md-5 col-sm-4">
+            <g:actionSubmit value="Sauvegarder" type="button" class="button btn-primary"
                             controller= "admin" action="addRessource" />
         </div>
+
+
 
 
 

@@ -437,7 +437,7 @@ class KDandMDModalityService {
 	   
 	   
      println ("trust final"+trust)
-	 return objResultAuth ;
+	 return authenticationResult ;
 	 }
 }
 

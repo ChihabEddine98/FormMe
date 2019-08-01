@@ -95,8 +95,14 @@
         <g:hiddenField name="coursId" value="${coursId}"></g:hiddenField>
 
 
-        <div class="champ col-md-4 col-sm-4">
-                <g:actionSubmit value="Sauvegarder" type="button" class="button btn-success"
+        <div class="champ col-md-5 col-sm-4">
+            <g:link class="button btn-danger" controller="admin" action="listCours" params="[type:'quiz']">
+                <i class="fas fa-backward" > <span style="font-family: Futura;">Formations</span> </i>
+            </g:link>
+        </div>
+
+        <div class="champ col-md-5 col-sm-4">
+                <g:actionSubmit value="Sauvegarder" type="button" class="button btn-primary"
                                 controller= "admin" action="editCours"/>
 
         </div>

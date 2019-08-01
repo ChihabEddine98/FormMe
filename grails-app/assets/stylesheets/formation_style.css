@@ -93,6 +93,12 @@ body {
         float: right;
         display: block;
     }
+    .coursDispo .container {
+        display: flow;
+        text-align: center;
+
+    }
+
 }
 
 @media screen and (max-width: 1300px) {
@@ -107,6 +113,7 @@ body {
         display: block;
         text-align: left;
     }
+
 }
 
 .dropbtn {
@@ -438,11 +445,11 @@ input[type="radio"]:checked + section { display: block; }
 }
 
 
-.coursDispo
+.coursDispo .container
 {
-    display: block;
+    display: flex;
     margin: 0 auto;
-    max-width: 600px;
+    /*width: 100;*/
     max-height: 100%;
     text-align: center;
 
@@ -459,6 +466,8 @@ input[type="radio"]:checked + section { display: block; }
     font-size: 60px;
     margin: 50px auto;
     padding: 60px;
+    margin-left: 8%;
+
 
 
 }
@@ -469,7 +478,7 @@ input[type="radio"]:checked + section { display: block; }
     color: var(--police-col);
     font-family: lato;
     font-size: 60px;
-    margin: 200px auto 100px auto;
+    margin: 50px auto 0px auto;
 
 }
 
@@ -508,7 +517,7 @@ input[type="radio"]:checked + section { display: block; }
     /*margin-bottom: 25px;*/
     font-family: Oswald;
     font-size: 28px;
-    width: 180px;
+    width: 200px;
     height: 50px;
     background: transparent;
     padding: auto;
@@ -516,7 +525,7 @@ input[type="radio"]:checked + section { display: block; }
     border-width: 0 0 3px 0;
     border: solid var(--duree-col);
     color: var(--duree-col);
-    border-radius: 25px;
+        border-radius: 25px;
     outline:0;
 
 
@@ -1281,7 +1290,10 @@ input[type="radio"]:checked + section { display: block; }
 }
 /* Fin social media icons */
 
+#mesCours .container{
 
+    margin-top: 70px;
+}
 
 .rowCours{
 
@@ -1382,6 +1394,112 @@ input[type="radio"]:checked + section { display: block; }
 
 
 .rowCours .duree {
+
+    float: right;
+    padding: 43px 10px;
+
+
+
+}
+
+/*.coursDispo .container{*/
+/*    display: inline;*/
+/*    !*text-align: center;*!*/
+/*}*/
+
+.coursDispo_row{
+
+    display: block;
+    /*margin: 15px 15px;*/
+    margin-right: 35px;
+    margin-bottom: 100px;
+    min-width: 500px;
+    max-width: 500px;
+    height: 100%;
+    min-height: 700px;
+    text-align: center;
+    border: var(--blanc-col) solid;
+    border-width: 0px 0 7px 0px;
+
+    padding: 8px;
+    border-radius: 5px;
+
+
+    background: rgba(23, 57, 58, 0.57);
+
+}
+
+.coursDispo_row .btnLink {
+
+    /*float: right;*/
+
+    text-align: center;
+    /*margin-bottom: 25px;*/
+    font-family: Oswald;
+    font-size: 28px;
+    width: 200px;
+    height: 50px;
+    background: transparent;
+    margin:  38px 20px;
+
+    /*border-width: 0 0 3px 0;*/
+    /*border: solid var(--duree-col);*/
+    color: var(--duree-col);
+    border-radius: 0px;
+    outline:0;
+
+
+}
+
+.coursDispo_row .btnLink:hover
+{
+    cursor: pointer;
+    color: var(--attirante-col);
+    /*border: 3px solid var(--attirante-col);*/
+    background: var(--bg-col);
+
+
+}
+
+.coursDispo_row .coursDispo_row h1{
+
+
+    font-family: Oswald;
+    font-size: 28px;
+    float: left;
+    padding: 18px 8px;
+    color: var(--blanc-col);
+
+
+}
+
+.coursDispo_row img  {
+
+
+    /*float: left;*/
+    /*width: 180px;*/
+    height: 250px;
+    min-height: 280px;
+
+    padding: 0px;
+
+    width: 100%;
+    min-width: 180px;
+    border-radius: 8px;
+    filter: contrast(180%);
+
+    /*transform: scale(0.9);*/
+
+
+
+
+
+}
+
+
+
+
+.coursDispo_row .coursDispo_row .duree {
 
     float: right;
     padding: 43px 10px;

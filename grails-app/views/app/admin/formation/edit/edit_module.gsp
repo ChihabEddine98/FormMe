@@ -70,8 +70,14 @@
         <g:hiddenField name="moduleId" value="${moduleId}"></g:hiddenField>
 
 
-        <div class="champ col-md-4 col-sm-4">
-            <g:actionSubmit value="Sauvegarder" type="button" class="button btn-success"
+        <div class="champ col-md-5 col-sm-4">
+            <g:link class="button btn-danger" controller="admin" action="listModule" params="[type:'quiz']">
+                <i class="fas fa-backward" > <span style="font-family: Futura;">Modules</span> </i>
+            </g:link>
+        </div>
+
+        <div class="champ col-md-5 col-sm-4">
+            <g:actionSubmit value="Sauvegarder" type="button" class="button btn-primary"
                             controller= "admin" action="editModule" />
         </div>
 

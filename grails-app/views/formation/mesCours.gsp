@@ -31,13 +31,14 @@
             </h1>
         </div>
 
+
         <div class="container">
 
 
 
             <!-- Tab content -->
             <div id="cours_tab" class="tabcontent">
-                <g:each class="${(i % 2) == 0 ? 'even' : 'odd'}" var="cours" in="${userInstance.cours.sort({a,b-> a.id.compareTo(b.id)} )}" status="i" >
+                <g:each class="${(i % 2) == 0 ? 'even' : 'odd'}" var="cours" in="${coursList.sort({a,b-> a.id.compareTo(b.id)} )}" status="i" >
 
                     <div class="rowCours">
 
@@ -62,6 +63,12 @@
 
                 </g:each>
             </div>
+
+            <div class="pagination">
+                <g:paginate total="${userInstance.cours.size()}"/>
+
+            </div>
+
 
         </div>
 

@@ -162,8 +162,10 @@ a:hover {
 .content .champ{
 
     display: inline-grid;
-
+    font-family: Futura;
+    font-size: 26px;
 }
+
 
 
 
@@ -264,7 +266,8 @@ tbody {
     vertical-align: super;
     height: 60px;
     margin-top: 10%;
-    width: 90%;
+    /*margin-left: 20%;*/
+    width: 80%;
 }
 
 .button:hover {
@@ -423,15 +426,16 @@ tr:hover {
     padding: 15px;
     color: #141414;
     /*position: relative;*/
-    margin: 20px 60px;
+    margin: 5px auto 50px auto;
     min-width: 400px;
     width: 600px;
     min-height: 55px;
-    background: transparent;
-    border: #6d6d6d solid;
+    background: rgba(215, 228, 239, 0.78);
+    border: #0a1574 solid;
     border-width: 3px 2px 3px 2px;
-    /*border-radius: 15px 10px 40px 5px;*/
+    border-radius: 15px 0px 40px 5px;
     outline: 0;
+
 }
 
 
@@ -441,7 +445,9 @@ tr:hover {
 
     min-width: 600px;
     max-width: 600px;
-    min-height: 150px;
+    min-height: 300px;
+    border-radius: 15px 0px 40px 5px;
+
 }
 
 
@@ -526,25 +532,25 @@ font-size: 22px;
 }
 
 /* Change color of dropdown links on hover */
-/*.dropdown-content a:hover*/
-/*{*/
-/*    !*border: #4dd7ff solid ;*!*/
-/*    !*border-width: 0 0 3px 0;*!*/
-/*    !*border-radius: 15px;*!*/
+.dropdown-content a:hover
+{
+    /*border: #4dd7ff solid ;*/
+    /*border-width: 0 0 3px 0;*/
+    /*border-radius: 15px;*/
 
-/*    text-align: center;*/
+    text-align: center;
 
-/*    position: relative;*/
-/*    font-family: lato;*/
-/*    font-size: 24px;*/
-/*    color: #bdbdbd;*/
-/*    text-decoration: none;*/
-/*    display: block;*/
-/*    height: 16%;*/
-/*    width: 100%;*/
-/*    margin: 1%;*/
+    position: relative;
+    font-family: lato;
+    font-size: 24px;
+    color: #bdbdbd;
+    text-decoration: none;
+    display: block;
+    height: 16%;
+    width: 100%;
+    margin: 1%;
 
-/*}*/
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -601,6 +607,8 @@ hr{
     color: rgba(255, 255, 255, 0.91);
     outline: none;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+
 }
 
 .no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
@@ -658,3 +666,11 @@ hr{
 }
 
 
+.userImgList{
+
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: 10px;
+
+}

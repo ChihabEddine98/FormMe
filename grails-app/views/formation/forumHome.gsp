@@ -6,7 +6,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="track.DiscussionThread" %>
+<%@ page import="track.Section; track.DiscussionThread" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +39,10 @@
     </div>
 </g:each>
 
+<div class="pagination">
+    <g:paginate total="${track.Section.list().size()}"/>
+
+</div>
 
 
 

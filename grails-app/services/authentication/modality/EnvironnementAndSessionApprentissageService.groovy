@@ -480,7 +480,7 @@ class EnvironnementAndSessionApprentissageService {
 		
 		
 		
-		
+		return authenticationResult
 		
 	   }
 	  

@@ -14,8 +14,14 @@ class HomeFormationController {
 
     @Secured(['ROLE_ADMIN','ROLE_USER'])
     def index() {
+
+
         User user = springSecurityService.currentUser
-        render(view: "/formation/home",model: [userInstance:user])
+
+        params.max=2
+        def listCours=Cours.list(params)
+
+        render(view: "/formation/home",model: [userInstance:user,listCours:listCours])
     }
 
 
@@ -164,7 +170,34 @@ class HomeFormationController {
     @Secured(['ROLE_ADMIN','ROLE_USER'])
     def mesCours() {
         User user = springSecurityService.currentUser
-        render(view: "/formation/mesCours",model: [userInstance:user])
+
+        params.max=3
+
+        ArrayList<Integer> ids=new ArrayList<Integer>()
+
+        user.cours.each {
+            ids.add(it.id)
+        }
+
+        def coursList_bis=Cours.findAllByIdInList(ids,params)
+        ArrayList<Cours> coursList=new LinkedList<Cours>()
+
+//        coursList_bis.each {
+//
+//            if (user.cours.contains(it))
+//            {
+//                coursList.add(it)
+//            }
+//
+
+        coursList_bis.each {
+
+            println(it)
+
+        }
+
+
+        render(view: "/formation/mesCours",model: [userInstance:user,coursList: coursList_bis])
     }
 
 

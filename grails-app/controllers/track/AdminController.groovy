@@ -330,18 +330,171 @@ class AdminController {
 //	}
 	def manuallyAuthenticateBiometricUser()
 	{
-		render "Signature user id is [" + params.signatureUser + "] \n Profile user id is [" + params.profileUser + "]"
-		JSONObject objResultAuth = authenticationCalculService.authentificationBiometric (params.signatureUser,params.profileUser)
-		render(objResultAuth)
-		render(view: '/app/admin/manualAuthentication/index', model:[])
+//		render "Signature user id is [" + params.signatureUser + "] \n Profile user id is [" + params.profileUser + "]"
+		AuthenticationResult authenticationResultObj = authenticationCalculService.authentificationBiometric (params.signatureUser,params.profileUser)
+
+		AuthenticationResult authenticationResult=AuthenticationResult.findById(authenticationResultObj.id)
+
+		List<ObselTrust> listObselTrust = ObselTrust.findAllByAuthenticationResult(authenticationResult, [max: 1000, sort: "begin", order: "asc", offset: 0])
+
+		ArrayList<Float> listTrusts = new ArrayList<Float>()
+
+		listObselTrust.each
+				{
+					listTrusts.add(it.trust)
+				}
+
+		listTrusts.reverse()
+
+
+
+
+		//render(view: '/app/admin/authenticationResults/authenticationDetail', model:[listObselTrust: listObselTrust, authenticationResult: authenticationResult, listTrusts: listTrusts, distanceMean:distanceMean, distanceMedian:distanceMedian, distanceVariance:distanceVariance, distanceStandardDeviation:distanceStandardDeviation])
+		render(view: '/app/admin/manualAuthentication/authenticationDetail', model:[listObselTrust: listObselTrust, authenticationResult: authenticationResult, listTrusts: listTrusts])
+
+
+//		render(view: '/app/admin/manualAuthentication/index', model:[])
 	}
 	@Secured(['ROLE_ADMIN'])
 	def manuallyAuthenticateEnvAppUser()
-	{
-		println ("here")
-		render "Signature user id is [" + params.signatureUser + "] \n Profile user id is [" + params.profileUser + "]"
-		 authenticationCalculService.authentificationEnvApp (params.signatureUser,params.profileUser)
-		render(view: '/app/admin/manualAuthentication/index', model:[])
+   {
+
+	 AuthenticationResult authenticationResultObj=authenticationCalculService.authentificationEnvApp (params.signatureUser,params.profileUser)
+
+     AuthenticationResult authenticationResult=AuthenticationResult.findById(authenticationResultObj.id)
+
+	 List<ObselSessionTrust> listObselSessionTrust = ObselSessionTrust.findAllByAuthenticationResult(authenticationResult, [max: 1000, sort: "id", order: "asc", offset: 0])
+
+	 ArrayList<Float> listTrusts = new ArrayList<Float>()
+	 ArrayList<String> detailsDist = new ArrayList<String>()
+	 ArrayList<String> oldBary = new ArrayList<String>()
+	 ArrayList<String> newBary = new ArrayList<String>()
+	 ArrayList<String> oldBaryAdd = new ArrayList<String>()
+	 ArrayList<String> newBaryAdd = new ArrayList<String>()
+	 def distanceDetails
+
+
+
+	 listObselSessionTrust.each
+			 {
+				 listTrusts.add(it.trust)
+
+				 String distance="",ancienBary,nouveauBary,ancienBaryAdd=""
+				 String nouveauBaryAdd=""
+
+
+				 try {
+					 String formattedDistance="{"+'''"distances"'''+":"+it.detailsDistances+"}"
+
+					 JSONObject jsonObject = new JSONObject(formattedDistance)
+
+					 JSONArray jsonArray = jsonObject.getJSONArray("distances")
+					 for (int i = 0; i < jsonArray.length(); i++) {
+						 JSONObject explrObject = jsonArray.getJSONObject(i)
+
+
+						 distance+=" ClusterID     	: "+explrObject.get("clusterID ").toString().trim()
+						 distance+=" \nSimularité "+explrObject.get("Simularité").toString().trim()
+						 distance+=" -----------------------"
+
+
+
+
+					 }
+
+					 detailsDist.add(distance)
+
+
+					 ancienBary=""
+					 ancienBaryAdd=""
+					 if(it.ancienbarycentre!=null)
+					 {
+						 jsonObject = new JSONObject(it.ancienbarycentre)
+
+
+
+						 ancienBary+=" m:name \n "+jsonObject.get("m:name")
+						 ancienBary+="\n m:poid \n "+jsonObject.get("m:poid")
+
+						 ancienBaryAdd+="  m:dayOfWeek    =  "+jsonObject.get("m:dayOfWeek")
+						 ancienBaryAdd+="\n "
+						 ancienBaryAdd+=" m:hoursOfDay   =  "+jsonObject.get("m:hoursOfDay")
+						 ancienBaryAdd+="\n "
+						 ancienBaryAdd+=" m:persistantID =  "+jsonObject.get("m:persistantID")
+						 ancienBaryAdd+="\n "
+						 ancienBaryAdd+=" m:adressIP     =  "+jsonObject.get("m:adressIP")
+						 ancienBaryAdd+="\n "
+						 ancienBaryAdd+=" @type 	 =  "+jsonObject.get("@type")
+						 ancienBaryAdd+="\n "
+						 ancienBaryAdd+=" m:listSession  = \n   "
+						 String[] ary = jsonObject.get("m:listSession").toString().split(",")
+						 ary.each { s->
+							 ancienBaryAdd+=s+","+"\n   "
+
+						 }
+						 ancienBaryAdd+="]"
+
+					 }
+
+					 oldBary.add(ancienBary)
+					 oldBaryAdd.add(ancienBaryAdd)
+
+					 nouveauBary=""
+					 nouveauBaryAdd=""
+
+					 if(it.nouveaubarycentre!=null)
+					 {
+						 jsonObject = new JSONObject(it.nouveaubarycentre)
+
+
+
+						 nouveauBary+=" m:name \n "+jsonObject.get("m:name")
+						 nouveauBary+="\n m:poid \n "+jsonObject.get("m:poid")
+
+						 nouveauBaryAdd+="  m:dayOfWeek    =  "+jsonObject.get("m:dayOfWeek")
+						 nouveauBaryAdd+="\n "
+						 nouveauBaryAdd+=" m:hoursOfDay   =  "+jsonObject.get("m:hoursOfDay")
+						 nouveauBaryAdd+="\n "
+						 nouveauBaryAdd+=" m:persistantID =  "+jsonObject.get("m:persistantID")
+						 nouveauBaryAdd+="\n "
+						 nouveauBaryAdd+=" m:adressIP     =  "+jsonObject.get("m:adressIP")
+						 nouveauBaryAdd+="\n "
+						 nouveauBaryAdd+=" @type 	 =  "+jsonObject.get("@type")
+						 nouveauBaryAdd+="\n "
+						 nouveauBaryAdd+=" m:listSession  = \n   "
+						 String[] ary2 = jsonObject.get("m:listSession").toString().split(",")
+						 ary2.each { s->
+							 nouveauBaryAdd+=s+","+"\n   "
+
+						 }
+						 nouveauBaryAdd+="]"
+
+					 }
+
+					 newBary.add(nouveauBary)
+					 newBaryAdd.add(nouveauBaryAdd)
+
+
+				 }catch (JSONException err){
+					 println("Error"+err.toString())
+				 }
+
+
+
+
+			 }
+
+	 listTrusts.reverse()
+
+
+	 //render(view: '/app/admin/authenticationResults/authenticationDetail', model:[listObselTrust: listObselTrust, authenticationResult: authenticationResult, listTrusts: listTrusts, distanceMean:distanceMean, distanceMedian:distanceMedian, distanceVariance:distanceVariance, distanceStandardDeviation:distanceStandardDeviation])
+	 render(view: '/app/admin/manualAuthentication/authDetailObselSession', model:[listObselTrust: listObselSessionTrust,
+																					authenticationResult: authenticationResult,
+																					listTrusts: listTrusts, distances:detailsDist,
+																					oldBaryCentre:oldBary,oldBaryCentreAdd:oldBaryAdd
+																					, newBaryCentre:newBary,newBaryCentreAdd:newBaryAdd])
+
+
 	}
 	
 
@@ -635,18 +788,6 @@ class AdminController {
 			return
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 	// Delete
@@ -802,7 +943,7 @@ class AdminController {
 
 	// Add ( save )
 	@Secured(['ROLE_ADMIN'])
-	def addRessource(Ressource ressourceInstance,String type,String chapitre,String contenu){
+	def addRessource(Ressource ressourceInstance,String type,String chapitre,String contenu,String url,String format){
 
 
 
@@ -813,9 +954,27 @@ class AdminController {
 
 		if (ressourceInstance == null) {notFound() ; return }
 		if (ressourceInstance.hasErrors()) {
-			render (view:'/app/admin/formation/add/add_ressource', model:[ressourceInstance:ressourceInstance])
+
+			if(type.equals("img") || type.equals("audio") || type.equals("video") )
+			{
+				type="media"
+			}
+
+
+			render (view:'/app/admin/formation/add/add_ressource', model:[ressourceInstance:ressourceInstance
+																		  ,type:type])
 			return
 		}
+
+
+
+
+		if(type.equals("img") || type.equals("audio") || type.equals("video") )
+		{
+			type="media"
+		}
+
+
 
 		if(type.equals("txt"))
 		{
@@ -824,9 +983,9 @@ class AdminController {
 
 
 			TextRessource tR=new TextRessource(nom: ressourceInstance.nom,
-												path: ressourceInstance.path,
+												path: Chapitre.findById(Integer.parseInt(chapitre)).toString(),
 												chapitre:Chapitre.findById(Integer.parseInt(chapitre)),
-												type: type,
+												type: ressourceInstance.type,
 											    url: ressourceInstance.path,
 												contenu: contenu)
 			tR.save()
@@ -835,7 +994,44 @@ class AdminController {
 		}
 
 
+		else if(type.equals("media"))
+		{
 
+			ressourceInstance.path=Chapitre.findById(Integer.parseInt(chapitre)).nom
+
+
+			println(" hnaa format :"+ressourceInstance.type)
+
+			AudioImgVideo tR=new AudioImgVideo(nom: ressourceInstance.nom,
+					path: Chapitre.findById(Integer.parseInt(chapitre)).toString(),
+					chapitre:Chapitre.findById(Integer.parseInt(chapitre)),
+					type: ressourceInstance.type,
+					url: url,
+					format: ressourceInstance.type)
+			tR.save()
+
+		}
+		else if(type.equals("quiz"))
+		{
+
+			ressourceInstance.path=Chapitre.findById(Integer.parseInt(chapitre)).nom
+
+
+			Quiz tR=new Quiz(nom: ressourceInstance.nom,
+					path: Chapitre.findById(Integer.parseInt(chapitre)).toString(),
+					chapitre:Chapitre.findById(Integer.parseInt(chapitre)),
+					type: ressourceInstance.type,
+					typeExo: ressourceInstance.type
+			)
+
+
+			tR.save()
+
+
+			listRessource("quiz")
+			return
+
+		}
 
 		listChapitre()
 
@@ -849,22 +1045,135 @@ class AdminController {
 		Ressource ressource=Ressource.findById(Integer.parseInt(params.ressource))
 
 
-		render(view: '/app/admin/formation/edit/edit_ressource', model:[ressource:ressource, type:params.type])
+		render(view: '/app/admin/formation/edit/edit_ressource', model:[ressourceInstance:ressource,
+																		type:params.type,
+																		resId:ressource.id])
+
+
+	}
+
+	// Edit (save)
+
+	@Secured(['ROLE_ADMIN'])
+	def editRessource(Ressource ressourceInstance,String resId,String chapitre,String type,String contenu,String url)
+	{
+
+
+		if (ressourceInstance == null) {
+			notFound() ; return }
+
+
+
+		if (ressourceInstance.hasErrors()) {
+
+
+			render (view:'/app/admin/formation/edit/edit_ressource', model:[moduleInstance:ressourceInstance])
+			return
+		}
+
+
+
+
+		if(type.equals("txt"))
+		{
+
+			TextRessource ressEdited=TextRessource.findById(Integer.parseInt(resId))
+
+			println(" avant :"+ressEdited.chapitre)
+
+			ressEdited.nom=ressourceInstance.nom
+			ressEdited.chapitre=Chapitre.findById(Integer.parseInt(chapitre))
+			ressEdited.path=ressEdited.chapitre.toString()
+			ressEdited.type=type
+			ressEdited.url=ressEdited.chapitre.toString()
+			ressEdited.contenu=contenu
+
+			println(" apreees :"+ressEdited.chapitre)
+
+
+			ressEdited.save flush: true
+
+			listRessource("txt")
+
+			return
+
+
+
+		}
+
+
+		else if(type.equals("img") || type.equals("audio") || type.equals("video"))
+		{
+
+
+
+			AudioImgVideo ressEdited=AudioImgVideo.findById(Integer.parseInt(resId))
+
+			println(" avant :"+ressEdited.chapitre)
+
+			ressEdited.nom=ressourceInstance.nom
+			ressEdited.chapitre=Chapitre.findById(Integer.parseInt(chapitre))
+			ressEdited.path=ressEdited.chapitre.toString()
+			ressEdited.type=type
+			ressEdited.url=url
+			ressEdited.format=type
+
+			println(" apreees :"+ressEdited.chapitre)
+
+
+			ressEdited.save flush: true
+
+			listRessource("media")
+
+			return
+		}
+		else if(type.equals("quiz"))
+		{
+
+			Quiz ressEdited=Quiz.findById(Integer.parseInt(resId))
+
+			println(" avant :"+ressEdited.chapitre)
+
+			ressEdited.nom=ressourceInstance.nom
+			ressEdited.chapitre=Chapitre.findById(Integer.parseInt(chapitre))
+			ressEdited.path=ressEdited.chapitre.toString()
+			ressEdited.type=type
+			ressEdited.typeExo="quiz"
+
+			println(" apreees :"+ressEdited.chapitre)
+
+
+			ressEdited.save flush: true
+
+			listRessource("quiz")
+			return
+
+		}
+
+
+
+
 
 
 	}
 
 	// List Questions
 	@Secured(['ROLE_ADMIN'])
-	def listQuestions(){
+	def listQuestions(String quizId){
 
 		String quiz=params.quiz
+
+		if(quiz==null)
+		{
+			quiz=quizId
+		}
 
 		Quiz quizR=Quiz.findById((long)Integer.parseInt(quiz))
 
 		ArrayList<Question> questions=Question.findAllByQuizR(quizR)
-		render(view: '/app/admin/formation/list/list_question', model:[questions:questions])
+		render(view: '/app/admin/formation/list/list_question', model:[questions:questions,qID:quiz])
 
+		return
 	}
 
 	// Edit UI
@@ -883,12 +1192,75 @@ class AdminController {
 
 
 	}
+	// Add Question UI
+
+	@Secured(['ROLE_ADMIN'])
+	def addQuestionUI(Question questionInstance)
+	{
+
+		render(view: '/app/admin/formation/add/add_question', model:[questionInstance:questionInstance,
+																	 quizId:params.quizId])
+
+	}
+
+
+	// Add Question (save)
+
+	@Secured(['ROLE_ADMIN'])
+	def addQuestion(Question questionInstance,String quizId)
+	{
+
+		if (questionInstance == null) {notFound() ; return }
+
+
+
+
+		if (questionInstance.hasErrors()) {
+			// Quiz inconnu
+			if(questionInstance.errors.getErrorCount()==1)
+			{
+				Quiz quiz=Quiz.findById((long)Integer.parseInt(quizId))
+
+				questionInstance.quizR=quiz
+
+				questionInstance.save()
+
+				listQuestions(quizId)
+
+				return
+
+			}
+			render (view:'/app/admin/formation/add/add_question', model:[questionInstance:questionInstance])
+			return
+		}
+
+
+
+
+
+	}
+
 	// List
 	@Secured(['ROLE_ADMIN'])
-	def listRessource(){
+	def listRessource(String typeR){
 
 		String type=params.type
 
+
+
+		println(" typee ="+type)
+		println(" typee R ="+typeR)
+
+
+		if(type==null || type.isEmpty())
+		{
+			type=typeR
+		}
+
+		if(typeR!=null)
+		{
+			type=typeR
+		}
 
 
 		if(!type.isEmpty())
@@ -915,7 +1287,7 @@ class AdminController {
 
 				}
 				else {
-					render(view: '/app/admin/formation/', model:[])
+					paramFormation()
 
 				}
 
@@ -949,10 +1321,17 @@ class AdminController {
 	}
 
 	@Secured(['ROLE_ADMIN'])
-	def gestionUsers(){
+	def gestionUsers(Integer max){
 
 
-		redirect( uri:'/admin/gestion/list/user')
+		params.max=5
+
+		def userList=User.list(params)
+
+
+
+		render(view: '/app/admin/formation/list/list_user' , model: [users:userList])
+//		redirect( uri:'/admin/gestion/list/user')
 
 	}
 

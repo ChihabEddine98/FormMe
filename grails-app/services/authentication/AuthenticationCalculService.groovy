@@ -3,7 +3,7 @@ package authentication
 import grails.transaction.Transactional
 
 import org.json.JSONObject
-
+import track.AuthenticationResult
 import track.ObselTrust
 import track.User
 import authentication.modality.EnvironnementAndSessionApprentissageService
@@ -45,9 +45,9 @@ class AuthenticationCalculService {
 		//User profileUser = User.findById(profilUserID)
 		User signatureUser = User.findByEmail(signatureUserID)
 		User profileUser = User.findByEmail(profilUserID)
-		
-		
-		JSONObject objResultAuth = KDandMDModalityService.CalculTrustKDandMDForTwoUSer(profileUser, signatureUser)
+
+
+		AuthenticationResult objResultAuth = KDandMDModalityService.CalculTrustKDandMDForTwoUSer(profileUser, signatureUser)
 		return objResultAuth;
 	}
 	def authentificationEnvApp ( String signatureUserID, String profilUserID){
@@ -58,7 +58,7 @@ class AuthenticationCalculService {
 		User profileUser = User.findByEmail(profilUserID)
 		
 		
-		EnvironnementAndSessionApprentissageService.AuthentificationEnvAprrTwoUSer(profileUser, signatureUser)
+		return EnvironnementAndSessionApprentissageService.AuthentificationEnvAprrTwoUSer(profileUser, signatureUser)
 		
 		
 	}

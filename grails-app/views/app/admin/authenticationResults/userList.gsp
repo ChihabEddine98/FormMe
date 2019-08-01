@@ -21,11 +21,20 @@
 			<thead>
 					<tr>
 
-						<g:sortableColumn property="firstname" title="${message(code: 'user.firstname.label', default: 'Firstname')}" />
 
-						<g:sortableColumn property="lastname" title="${message(code: 'user.lastname.label', default: 'Lastname')}" />
+%{--			Column qu'on peut triées par notre propres condtions 			--}%
 
-						<g:sortableColumn property="password" title="${message(code: 'user.email.label', default: 'email')}" />
+%{--						<g:sortableColumn property="firstname" title="${message(code: 'user.firstname.label', default: 'Firstname')}" />--}%
+
+%{--						<g:sortableColumn property="lastname" title="${message(code: 'user.lastname.label', default: 'Lastname')}" />--}%
+
+%{--						<g:sortableColumn property="password" title="${message(code: 'user.email.label', default: 'email')}" />--}%
+
+						<td> Firstname </td>
+
+						<td> Lastname</td>
+
+						<td> Email</td>
 
 						<td>Nb of signature authentications</td>
 

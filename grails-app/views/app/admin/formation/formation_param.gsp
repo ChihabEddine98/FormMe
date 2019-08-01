@@ -36,77 +36,117 @@
                 <tr>
                     <td> Cours </td>
                     <td>
-                        <g:link controller="admin" action="listCours">
-                            <i class="fas fa-list-ul"></i>
+                        <g:link class="btn btn-danger" controller="admin" action="listCours">
+                            <i class="fas fa-list-ul" style="font-size: 26px; "></i>
                         </g:link>
+                    </td>
                     <td>
-                        <g:link controller="admin" action="addCoursUI">
-                            <i class="fas fa-plus"></i>
+                        <g:link class="btn btn-success" controller="admin" action="addCoursUI">
+                            <i class="fas fa-plus" style="font-size: 26px; "></i>
                         </g:link>
                     </td>
                 </tr>
 
                 <tr>
-                    <td> Module </td>
+                    <td> Modules </td>
                     <td>
-                        <g:link controller="admin" action="listModule">
-                            <i class="fas fa-list-ul"></i>
+                        <g:link class="btn btn-danger" controller="admin" action="listModule">
+                            <i class="fas fa-list-ul" style="font-size: 26px; "></i>
                         </g:link>
+                    </td>
                     <td>
-                        <g:link controller="admin" action="addModuleUI">
-                            <i class="fas fa-plus"></i>
+                        <g:link class="btn btn-success" controller="admin" action="addModuleUI">
+                            <i class="fas fa-plus" style="font-size: 26px; "></i>
                         </g:link>
                     </td>
                 </tr>
 
                 <tr>
-                    <td> Chapitre </td>
+                    <td> Chapitres </td>
                     <td>
-                        <g:link controller="admin" action="listChapitre">
-                            <i class="fas fa-list-ul"></i>
+                        <g:link class="btn btn-danger" controller="admin" action="listChapitre">
+                            <i class="fas fa-list-ul" style="font-size: 26px; "></i>
                         </g:link>
+                    </td>
                     <td>
-                        <g:link controller="admin" action="addChapitreUI">
-                            <i class="fas fa-plus"></i>
+                        <g:link  class="btn btn-success" controller="admin" action="addChapitreUI">
+                            <i class="fas fa-plus" style="font-size: 26px; "></i>
+                        </g:link>
+                    </td>
+                </tr>
+
+                <tr></tr>
+                <tr>
+
+%{--                    <td>--}%
+%{--                        <div>--}%
+%{--                            <g:link class="btn btn-dark" controller="admin" action="listRessource" params="[type:'txt']">--}%
+%{--                                <i class="far fa-images" style="font-size: 38px; "></i>--}%
+%{--                            </g:link>--}%
+%{--                            <g:link class="btn btn-primary" controller="admin" action="listRessource" params="[type:'txt']">--}%
+%{--                                <i class="fas fa-file-audio" style="font-size: 38px; "></i>--}%
+%{--                            </g:link>--}%
+%{--                            <g:link class="btn btn-dark" controller="admin" action="listRessource" params="[type:'txt']">--}%
+%{--                                <i class="fas fa-file-video" style="font-size: 38px; "></i>--}%
+%{--                            </g:link>--}%
+%{--                            <g:link class="btn btn-warning" controller="admin" action="listRessource" params="[type:'txt']">--}%
+%{--                                <i class="fas fa-spell-check" style="font-size: 38px; "></i>--}%
+%{--                            </g:link>--}%
+%{--                        </div>--}%
+
+%{--                    </td>--}%
+
+
+                </tr>
+                <tr>
+                    <td>  Ressources </td>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td> Text  </td>
+                    <td>
+                        <g:link class="btn btn-danger" controller="admin" action="listRessource" params="[type:'txt']">
+                            <i class="fas fa-list-ul" style="font-size: 26px; "></i>
+                        </g:link>
+                    </td>
+                    <td>
+                        <g:link class="btn btn-success" controller="admin" action="addRessourceUI" params="[type:'txt']">
+                            <i class="fas fa-plus" style="font-size: 26px; "></i>
                         </g:link>
                     </td>
                 </tr>
 
                 <tr>
-                    <td> Text Ressource </td>
+                    <td> Media  </td>
                     <td>
-                        <g:link controller="admin" action="listRessource" params="[type:'txt']">
-                            <i class="fas fa-list-ul"></i>
+                        <g:link class="btn btn-danger" controller="admin" action="listRessource" params="[type:'media']">
+                            <i class="fas fa-list-ul" style="font-size: 26px; "></i>
                         </g:link>
+                    </td>
                     <td>
-                        <g:link controller="admin" action="addRessourceUI" params="[type:'txt']">
-                            <i class="fas fa-plus"></i>
+                        <g:link class="btn btn-success" controller="admin" action="addRessourceUI" params="[type:'media']">
+                            <i class="fas fa-plus" style="font-size: 26px; "></i>
                         </g:link>
                     </td>
                 </tr>
 
                 <tr>
-                    <td> Media Ressource </td>
+                    <td> Quiz  </td>
                     <td>
-                        <g:link controller="admin" action="listRessource" params="[type:'media']">
-                            <i class="fas fa-list-ul"></i>
-                        </g:link>
-                    <td>
-                        <g:link controller="admin" action="addRessourceUI" params="[type:'media']">
-                            <i class="fas fa-plus"></i>
+                        <g:link class="btn btn-danger" controller="admin" action="listRessource" params="[type:'quiz']">
+                            <i class="fas fa-list-ul" style="font-size: 26px; "></i>
                         </g:link>
                     </td>
-                </tr>
-
-                <tr>
-                    <td> Quiz Ressource </td>
                     <td>
-                        <g:link controller="admin" action="listRessource" params="[type:'quiz']">
-                            <i class="fas fa-list-ul"></i>
-                        </g:link>
-                    <td>
-                        <g:link controller="admin" action="addRessourceUI" params="[type:'quiz']">
-                            <i class="fas fa-plus"></i>
+                        <g:link class="btn btn-success" controller="admin" action="addRessourceUI" params="[type:'quiz']">
+                            <i class="fas fa-plus" style="font-size: 26px; "></i>
                         </g:link>
                     </td>
                 </tr>
