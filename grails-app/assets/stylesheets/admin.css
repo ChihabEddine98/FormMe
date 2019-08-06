@@ -30,7 +30,15 @@ body {
 }
 
 
+/* Palette des couleurs */
+:root {
+    --bg-col: rgb(31, 31, 31);
+    --police-col: #efefc5;
+    --hover-col: #efdd6d;
+    /*--bg-col: #354052;*/
+    /*--police-col: #9fa7b2;*/
 
+}
 
 
 
@@ -66,8 +74,8 @@ a:hover {
 }
 
 .main-nav {
-    color: #9fa7b2;
-    background-color: #354052;
+    color: var(--police-col);
+    background-color: var(--bg-col);
     margin: 0;
     width: 100px;
     height: 100%;
@@ -79,8 +87,8 @@ a:hover {
 }
 
 .top-nav {
-    color: #9fa7b2;
-    background-color: #354052;
+    color: var(--police-col);
+    background-color: var(--bg-col);
     width: 100%;
     height: 80px;
     display: inline-block;
@@ -112,7 +120,7 @@ ul {
 }
 
 .menu-nav a {
-    color: #9fa7b2;
+    color: var(--police-col);
     text-decoration: none;
     width: 100px;
     height: 80px;
@@ -127,7 +135,7 @@ ul {
 }
 
 .menu-nav:hover {
-    background-color: #47bac1;
+    background-color: var(--hover-col);
 }
 
 a:hover {
@@ -186,13 +194,13 @@ table {
 }
 
 table tr {
-    border-bottom: 1px solid #354052;
+    border-bottom: 1px solid var(--bg-col);
     height: 60px;
     padding: 10px 10px;
 }
 
 table th {
-    border-right: 1px solid #354052;
+    border-right: 1px solid var(--police-col);
     text-align: center;
 }
 
@@ -222,11 +230,11 @@ td {
 }
 
 .activeLi {
-    background-color: #47bac1 !important;
+    background-color: var(--hover-col) !important;
 }
 
 .activeA {
-    color: #ffffff !important;
+    color: var(--bg-col) !important;
 }
 
 th {
@@ -241,7 +249,7 @@ th a {
 }
 
 thead {
-    background-color: #354052;
+    background-color: var(--bg-col);
 }
 
 table {
@@ -254,7 +262,7 @@ td a {
 
 td a:hover {
     text-decoration: underline;
-    color: #47bac1;
+    color: var(--hover-col);
 }
 
 tbody {
@@ -263,16 +271,16 @@ tbody {
 
 .button {
     font-family: Futura;
-    background-color: #354052;
+    background-color: var(--bg-col);
     border-radius: 5px;
-    border: 1px solid #47bac1;
+    border: 1px solid var(--hover-col);
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
     font-size: 24px;
     padding: 8px 16px;
     text-decoration: none;
-    text-shadow:0 1px 0 #354052;
+    text-shadow:0 1px 0 var(--bg-col);
     vertical-align: super;
     height: 60px;
     margin-top: 10%;
@@ -281,8 +289,9 @@ tbody {
 }
 
 .button:hover {
-    background-color:#47bac1;
-    border: 1px solid #354052;
+    background-color:var(--hover-col);
+    border: 1px solid var(--bg-col);
+    color: var(--bg-col);
 }
 .button:active {
     position:relative;
@@ -291,21 +300,21 @@ tbody {
 
 .buttonObsel {
     float: right;
-    background-color: #354052;
+    background-color: var(--bg-col);
     border-radius: 22px;
-    border: 1px solid #47bac1;
+    border: 1px solid var(--hover-col);
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
     font-size: 14px;
     padding: 8px 16px;
     text-decoration: none;
-    text-shadow: 0 1px 0 #354052;
+    text-shadow: 0 1px 0 var(--bg-col);
     margin: 50px;
 }
 .buttonObsel:hover {
-    background-color:#47bac1;
-    border: 1px solid #354052;
+    background-color:var(--hover-col);
+    border: 1px solid var(--bg-col);
 }
 .buttonObsel:active {
     position:relative;
@@ -319,7 +328,7 @@ tbody {
     /*display: inline-block;*/
     margin-left: 10px;
     text-transform: capitalize;
-    color: #354052;
+    color: var(--bg-col);
     width: 200px;
 }
 
@@ -331,11 +340,11 @@ tbody {
 }
 
 .fa-user {
-    color: #354052;
+    color: var(--bg-col);
 }
 
 tr:hover {
-    color: #47bac1;
+    /*color: var(--hover-col);*/
 }
 
 .table-dashboard tr:hover {
@@ -352,7 +361,7 @@ tr:hover {
     display: block;
 }
 .notempty .fa-superpowers,.notempty .fa-table,.notempty .fa-plus {
-    color: #354052;
+    color: var(--bg-col);
     font-size: 10px !important;
     display: block !important;
     margin-left: 0px;
@@ -363,25 +372,25 @@ tr:hover {
 }
 
 .notempty .fa-superpowers,.notempty .fa-table {
-    border-bottom: 1px solid #354052;
+    border-bottom: 1px solid var(--bg-col);
 }
 
 .notempty {
     float: right;
     width: 20px;
     height: 105px;
-    border-left: 1px solid #354052;
+    border-left: 1px solid var(--bg-col);
 }
 
 .empty {
     float: right;
     width: 20px;
     height: 105px;
-    border-left: 1px solid #354052;
+    border-left: 1px solid var(--bg-col);
 }
 
 .empty .fa-superpowers,.empty .fa-table,.empty .fa-plus {
-    color: #354052;
+    color: var(--bg-col);
     font-size: 10px !important;
     display: block !important;
     margin-left: 0px;
@@ -396,7 +405,7 @@ tr:hover {
 }
 
 .empty .fa-superpowers,.empty .fa-table {
-    border-bottom: 1px solid #354052;
+    border-bottom: 1px solid var(--bg-col);
 }
 
 .empty a, .notempty a {
@@ -594,7 +603,7 @@ hr{
     /*-moz-box-shadow: 0 0 3px 1px #AAAAAA;*/
     /*-webkit-box-shadow: 0 0 3px 1px #AAAAAA;*/
     /*box-shadow: 0 0 3px 1px #AAAAAA;*/
-    background: var(--bg-col);
+    /*background: var(--bg-col);*/
 }
 
 .pagination a,
@@ -641,8 +650,8 @@ hr{
     font-family: lato;
     font-size: 16px;
     display: inline-block;
-    background-color: var(--bg-col);
-    color: var(--blanc-col);
+    /*background-color: var(--bg-col);*/
+    /*color: var(--blanc-col);*/
     margin: 10px;
 }
 .collapsible button
@@ -650,8 +659,8 @@ hr{
     font-family: lato;
     font-size: 16px;
     border: none;
-    background-color: var(--bg-col);
-    color: var(--blanc-col);
+    /*background-color: var(--bg-col);*/
+    /*color: var(--blanc-col);*/
     outline:0;
 
 
@@ -667,8 +676,10 @@ hr{
 .addContent {
 
     padding: 0 18px;
+    margin: 10px;
     display: none;
     overflow: hidden;
+    text-align: left;
     /*background-color: #141414;*/
     color: #000;
     font-family: lato;

@@ -37,7 +37,7 @@
 %{--                                                                                   aria-hidden="true"></i><g:message--}%
 %{--                    code="default.home.label"/></a></li>--}%
 
-            <li class="menu-nav"><g:link controller="admin" class="create" action="gestionUsers"><i class="fas fa-users-cog fa-layout"
+            <li class="menu-nav usersLi"><g:link controller="admin" class="usersA" action="gestionUsers"><i class="fas fa-users-cog fa-layout"
                                                                                                     aria-hidden="true"></i><g:message
                     args="[entityName]"/> Utilisateurs</g:link></li>
 

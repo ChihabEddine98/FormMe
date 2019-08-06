@@ -167,5 +167,18 @@
     </div>
 
 </div>
+
+<script>
+
+    var classActive = function () {
+        $('.usersLi').addClass('activeLi');
+        $('.usersA').addClass('activeA');
+    };
+    $(document).ready(function () {
+        classActive();
+        $("#pageName").text("parametres des utilisateurs");
+    });
+</script>
+
 </body>
 </html>
