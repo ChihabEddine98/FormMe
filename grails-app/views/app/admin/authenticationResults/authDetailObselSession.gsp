@@ -75,8 +75,14 @@
                         </div>
 
                         <div class="addContent">
-%{--                            <pre>${oldBaryCentreAdd.get(i)}</pre>--}%
-                            <pre> Heree : type de liste   null</pre>
+                            <pre style="color: #23347e;">${oldBaryCentreAdd.get(i)}</pre>
+%{--                        <pre> Egale avec l'avant : false</pre>--}%
+%{--                        <pre> Heree --- type de liste   null </pre>--}%
+%{--                        <pre> ancienBarycentre Avant : ${oldBaryCentreAdd.class} </pre>--}%
+%{--                        <pre> ancienBarycentre Apres : ${oldBaryCentreAdd.get(i).class}</pre>--}%
+
+%{--                        <pre> ancienBarycentre Size  Avant : ${oldBaryCentreAdd.size()} </pre>--}%
+%{--                        <pre> ancienBarycentre Size  Apres : ${oldBaryCentreAdd.get(i).size()}</pre>--}%
                         </div>
                     </g:if>
 
@@ -84,16 +90,23 @@
                 </td>
                 <td style="min-width: 200px;">
                     <pre>${newBaryCentre.get(i)}</pre>
-%{--                    <g:if test="${!newBaryCentre.get(i).isEmpty()}">--}%
-%{--                        <div class="collapsible">--}%
-%{--                            <i class="fas fa-plus-circle" style="font-size: 28px;color: #37a14b;"></i>--}%
-%{--                            <button style="font-size: 28px;color: #37a14b;"> Details </button>--}%
-%{--                        </div>--}%
+                    <g:if test="${!newBaryCentre.get(i).isEmpty()}">
+                        <div class="collapsible">
+                            <i class="fas fa-plus-circle" style="font-size: 28px;color: #37a14b;"></i>
+                            <button style="font-size: 28px;color: #37a14b;"> Details </button>
+                        </div>
 
-%{--                        <div class="addContent">--}%
-%{--                            <pre>${newBaryCentreAdd.get(i)}</pre>--}%
-%{--                        </div>--}%
-%{--                    </g:if>--}%
+                        <div class="addContent">
+                            <pre style="color: #23347e;">${newBaryCentreAdd.get(i)}</pre>
+%{--                            <pre> Egale avec l'avant : true</pre>--}%
+%{--                            <pre> Heree --- type de liste   null </pre>--}%
+%{--                            <pre> NouveauBarycentre Avant : ${newBaryCentreAdd.class} </pre>--}%
+%{--                            <pre> NouveauBarycentre Apres : ${newBaryCentreAdd.get(i).class}</pre>--}%
+
+%{--                            <pre> NouveauBarycentre Size  Avant : ${newBaryCentreAdd.size()} </pre>--}%
+%{--                            <pre> NouveauBarycentre Size  Apres : ${newBaryCentreAdd.get(i).size()}</pre>--}%
+                        </div>
+                    </g:if>
 
                 </td>
                 <td style="min-width: 50px;">
@@ -124,7 +137,7 @@
 
     var array = ${listTrusts}
 
-        array.reverse();
+        // array.reverse();
 
 
     GRAPH = document.getElementById('graph');

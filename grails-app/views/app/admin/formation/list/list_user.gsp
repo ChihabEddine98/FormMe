@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="layout" content="admin">
-    <title> Formations Disponibles </title>
+    <title> Utilisateurs Disponibles </title>
 </head>
 
 <body>
@@ -17,10 +17,26 @@
 <div class="content">
 
 
-    <h1> Users  </h1>
+
+    <g:if test="${filtre==null}">
+        <h1 style="font-family: Futura;"> Tout Les Utilisateurs  </h1>
+    </g:if>
+    <g:else>
+        <g:if test="${filtre.equals("cours")}">
+            <h1 style="font-family: Futura;"> Les Utilisateurs Inscrits à un cours (au moins) </h1>
+        </g:if>
+        <g:if test="${filtre.equals("admin")}">
+            <h1 style="font-family: Futura;"> Les Admins </h1>
+        </g:if>
+        <g:if test="${filtre.equals("simple")}">
+            <h1 style="font-family: Futura;"> Les Utilisateurs Simples</h1>
+        </g:if>
+    </g:else>
+
     <hr>
 
     <div class="champ">
+
         <h4>
             Ajouter un nouveau utilisateur ?
         </h4>
@@ -28,6 +44,39 @@
     <div class="champ col-md-3 col-sm-4">
         <g:link class="button btn-primary" controller="admin" action="addCoursUI" params="[type:'chapitre']">
             <i class="fas fa-plus" > <span style="font-family: Futura;">Ajouter</span> </i>
+        </g:link>
+    </div>
+
+    <hr>
+
+    <hr>
+    <div class="champ">
+        <h4 style="font-family: Futura; font-size: 32px;color: #3e4154;"> ${count} Résultats trouvés</h4>
+    </div>
+    <hr>
+    <div class="">
+        <h4 style="font-family: Futura; font-size: 32px">
+            Filtrer les résultats ?
+        </h4>
+    </div>
+    <div class="champ col-md-2 col-sm-4">
+        <g:link class="button btn-success" controller="admin" action="gestionUsers">
+            <i class="fas fa-users" > <span style="font-family: Futura;">All Users</span> </i>
+        </g:link>
+    </div>
+    <div class="champ col-md-3 col-sm-4">
+        <g:link class="button btn-primary" controller="admin" action="gestionUsers" params="[filtre:'cours']">
+            <i class="fas fa-user-graduate" > <span style="font-family: Futura;">Inscrits à un cours</span> </i>
+        </g:link>
+    </div>
+    <div class="champ col-md-3 col-sm-4">
+        <g:link class="button btn-warning" controller="admin" action="gestionUsers" params="[filtre:'admin']">
+            <i class="fas fa-user-shield" > <span style="font-family: Futura;">Admin Role</span> </i>
+        </g:link>
+    </div>
+    <div class="champ col-md-3 col-sm-4">
+        <g:link class="button btn-danger" controller="admin" action="gestionUsers" params="[filtre:'simple']">
+            <i class="fas fa-user" style="color: white;"> <span style="font-family: Futura; color: white"> Simple User</span> </i>
         </g:link>
     </div>
 
@@ -91,8 +140,17 @@
             </tbody>
         </table>
 
+        <hr>
+
+
         <div class="pagination">
-            <g:paginate total="${User.list().size()}"/>
+
+            <g:if test="${filtre!=null}">
+                <g:paginate total="${count}" params="[filtre: filtre]"/>
+            </g:if>
+            <g:else>
+                <g:paginate total="${User.list().size()}"/>
+            </g:else>
 
         </div>
 

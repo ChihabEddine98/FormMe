@@ -157,13 +157,23 @@ a:hover {
     margin-left: 10%;
     width: 85%;
     padding: 0 40px;
+    text-align: center;
 
+
+}
+
+.contentObsel .champ{
+
+    display: inline-grid;
+    font-family: Futura;
+    font-size: 26px;
 }
 .content .champ{
 
     display: inline-grid;
     font-family: Futura;
     font-size: 26px;
+
 }
 
 
@@ -507,7 +517,7 @@ font-size: 22px;
     display: none;
     /*position: absolute;*/
     background-color: rgba(0,0,0,0.87);
-    height: 23%;
+    min-height: 21%;
     min-width: 14%;
     top: 20.8%;
     left: 3.5%;
@@ -673,4 +683,43 @@ hr{
     border-radius: 50%;
     margin: 10px;
 
+}
+.coursImgList{
+
+
+    width: 120px;
+    height: 100px;
+    border-radius: 5px;
+    margin: 10px;
+
+    filter: contrast(150%);
+}
+
+.mediaImgList{
+
+
+    width: 250px;
+    height: 140px;
+    border-radius: 5px;
+    margin: 10px;
+
+    filter: contrast(150%);
+}
+
+.tableCase{
+
+    border: #4a4a4a solid;
+    border-width:  0 1px 0 0;
+}
+
+.tableCaseBas{
+
+    border: #0f0f0f solid;
+    border-width:  0 0px 3px 0;
+}
+
+.tableCaseHaut{
+
+    border: #0f0f0f solid;
+    border-width:  3px 1px 0px 0;
 }

@@ -71,10 +71,10 @@ class EventService {
 	def inscriptionEvent(User userInstance) {
 
 
-		boolean estAdmin= UserRole.findByUser(userInstance).role.authority.equals("ROLE_ADMIN")
+//		boolean estAdmin= UserRole.findByUser(userInstance).role.authority.equals("ROLE_ADMIN")
 
-		if (!estAdmin)
-		{
+//		if (!estAdmin)
+//		{
 			// create Base de trace user
 			Base base = ktbsService.createBase (userInstance.iduser, "base user ")
 			// create primary Trace for envApprentissage
@@ -93,7 +93,7 @@ class EventService {
 			Cookie cookiePID = new Cookie('PersisentID',pID)
 
 			CookieService.setCookie(cookiePID)
-		}
+//		}
 
 
 

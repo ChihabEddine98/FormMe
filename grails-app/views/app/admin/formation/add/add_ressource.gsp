@@ -64,7 +64,7 @@
 
         <g:if test="${type.equals("txt")}">
 
-            <% def ressource=(track.TextRessource) ressourceInstance%>
+%{--            <% def ressource=(track.TextRessource) ressourceInstance%>--}%
 
 
             <div class="champ">
@@ -76,7 +76,7 @@
 
         </g:if>
         <g:elseif test="${type.equals("media")}">
-            <% ressource=(track.AudioImgVideo) ressourceInstance %>
+%{--            <% ressource=(track.AudioImgVideo) ressourceInstance %>--}%
 
 
             <div class="champ">
@@ -95,7 +95,7 @@
 
         </g:elseif>
         <g:elseif test="${type.equals("quiz")}">
-            <% ressource=(track.Quiz) ressourceInstance %>
+%{--            <% ressource=(track.Quiz) ressourceInstance %>--}%
 
 
             <div class="champ">

@@ -5,7 +5,7 @@
   Time: 12:51
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="track.Cours" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="admin">
@@ -38,6 +38,7 @@
         <table>
             <thead>
             <tr>
+                <td></td>
                 <td> Nom </td>
                 <td> Domaine </td>
                 <td> Durée </td>
@@ -49,6 +50,20 @@
 
             <g:each in="${coursDispo}" var="coursD">
                 <tr>
+                    <td>
+                        <g:if test="${coursD.imgUrl!=null}">
+                            <g:if test="${coursD.imgUrl.isEmpty() || coursD.imgUrl.equals(" ")}">
+                                <asset:image class="mediaImgList" src="defaultCoursImg.jpg" alt="photo du cours"/>
+                            </g:if>
+                            <g:else>
+                                <img class="mediaImgList" src="${coursD.imgUrl}" alt="photo de profil"/>
+                            </g:else>
+                        </g:if>
+                        <g:else>
+                            <asset:image class="mediaImgList" src="defaultCoursImg.jpg" alt="photo du cours"/>
+                        </g:else>
+
+                    </td>
                     <td> ${coursD.nom} </td>
                     <td> ${coursD.domaine} </td>
                     <td> ${coursD.duree} </td>
@@ -67,6 +82,13 @@
 
             </tbody>
         </table>
+
+        <hr>
+
+        <div class="pagination">
+            <g:paginate total="${track.Cours.list().size()}"/>
+
+        </div>
 
         <hr>
 

@@ -41,7 +41,7 @@
         <h4>ANIA : ${authenticationResult?.ania}</h4>
         <h4>ANGA : ${authenticationResult?.anga}</h4>
     </p>
-  
+
     <div id="graph" class="graph"></div>
     <table>
         <thead>
@@ -91,7 +91,7 @@
 
     var array = ${listTrusts}
 
-    array.reverse();
+    // array.reverse();
 
 
     GRAPH = document.getElementById('graph');

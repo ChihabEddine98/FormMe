@@ -37,9 +37,9 @@
 %{--                                                                                   aria-hidden="true"></i><g:message--}%
 %{--                    code="default.home.label"/></a></li>--}%
 
-            <li class="menu-nav"><g:link controller="admin" class="create" action="gestionUsers"><i class="fa fa-user-plus fa-layout"
+            <li class="menu-nav"><g:link controller="admin" class="create" action="gestionUsers"><i class="fas fa-users-cog fa-layout"
                                                                                                     aria-hidden="true"></i><g:message
-                    code="default.new.label" args="[entityName]"/></g:link></li>
+                    args="[entityName]"/> Utilisateurs</g:link></li>
 
             <li class="menu-nav formationLi"><g:link controller="admin" class="formationA"  action="paramFormation"><i
                     class="fas fa-graduation-cap fa-layout"
@@ -68,7 +68,7 @@
             <li class="menu-nav resultsASLi">
                 <div class="dropdown">
                     <a href="" class="dropbtn" > <g:link controller="admin" action="userList" params="[type:'BIOMETRIC',typeAuth:'System']"
-                                                         class="resultsAS" ><i class="fa fa-list fa-layout dropdown"
+                                                         class="resultsAS" ><i class="fas fa-headset fa-layout dropdown"
                                                                               aria-hidden="true"></i>Auth results System</g:link></a>
 
                     <div class="dropdown-content">
@@ -76,9 +76,13 @@
                         <g:link controller="admin"  action="userList" params="[type:'ENVAPP',typeAuth:'System']"> Env Session App </g:link>
                         <g:link controller="admin"  action="userList" params="[type:'COMPAPP',typeAuth:'System']">CompApp</g:link>
                         <a href="#">ActionApp</a>
+                        <p>--------------</p>
+                        <g:link controller="admin"  action="authSystemParUser">Par Utilisateur</g:link>
+                        <g:link controller="admin"  action="authSystemParCours" >Par Cours</g:link>
                     </div>
                 </div>
             </li>
+%{--            --}%
             <li class="menu-nav manualLi"><g:link controller="admin" class="manualA" action="manualAuthenticationIndex"><i
                     class="fas fa-sign-in-alt fa-layout"
                     aria-hidden="true"></i>Manual Auth</g:link>

@@ -74,6 +74,14 @@
         </tbody>
     </table>
 
+        <hr>
+
+
+        <div class="pagination">
+            <g:paginate total="${countQ?:0}" params="[quiz:qID]"/>
+        </div>
+
+        <hr>
         </div>
 
 
@@ -115,6 +123,8 @@
 
 
     </g:else>
+
+
 
     <hr>
 

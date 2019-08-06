@@ -62,6 +62,12 @@
             </tbody>
         </table>
 
+        <hr>
+
+        <div class="pagination">
+            <g:paginate total="${track.Module.list().size()}"/>
+
+        </div>
 
         <hr>
 

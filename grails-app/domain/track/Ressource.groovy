@@ -12,6 +12,6 @@ class Ressource {
 
     static constraints = {
 
-        type( inList: ["txt", "img", "video","quiz"])
+        type( inList: ["audio","txt", "img", "video","quiz"])
     }
 }

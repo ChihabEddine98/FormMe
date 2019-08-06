@@ -26,7 +26,7 @@
 /* Palette des couleurs */
 :root {
     --bg-col: linear-gradient(to right, #31111c, #042938, #042938);
-    --attirante-col: rgba(101, 234, 206, 0.98);
+    --attirante-col: rgba(48, 234, 151, 0.98);
     --attirante2-col: rgba(111, 254, 225, 0.98);
     --blanc-col: rgba(228, 228, 220, 0.98);
     --fond-col : rgb(23, 147, 143);
@@ -93,8 +93,8 @@ body {
         float: right;
         display: block;
     }
-    .coursDispo .container {
-        display: flow;
+    .coursDispo .container,.container {
+        display: inline;
         text-align: center;
 
     }
@@ -144,6 +144,7 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    /*transition: ease-in-out 150ms;*/
 }
 
 /* Change color of dropdown links on hover */
@@ -151,6 +152,7 @@ body {
 {
     border: var(--attirante-col)  solid 3px;
     border-radius: 25px;
+
 }
 
 /* Show the dropdown menu on hover */
@@ -187,11 +189,11 @@ input[type="radio"]:checked + section { display: block; }
     display: block;
     margin: 5% auto;
     max-width: 800px;
-    max-height: 100%;
+    /*max-height: 100%;*/
     text-align: center;
     /*border: var(--bg-col) solid 3px;*/
     /*padding: 8px;*/
-    border-radius: 25px;
+    /*border-radius: 25px;*/
 
 }
 
@@ -233,6 +235,13 @@ input[type="radio"]:checked + section { display: block; }
     padding: 0px;
     filter: contrast(120%);
     border-radius: 15px;
+
+
+}
+.container section img:hover {
+
+    filter: contrast(80%);
+    transform: scale(1.8);
 
 
 }
@@ -317,15 +326,18 @@ input[type="radio"]:checked + section { display: block; }
 
 /* Style the tab content */
 #cours_tab{
+    position: relative;
     display: block;
     padding: 0px;
     margin: 10px;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(4, 116, 122, 0.55);
+    text-align: center;
+    max-width: 820px;
 
     /*border: solid #ccc;*/
     border-width: 2px;
-    /*border-radius: 25px;*/
+    border-radius: 5px;
     /*border-top: none;*/
 }
 
@@ -444,13 +456,21 @@ input[type="radio"]:checked + section { display: block; }
     border: 3px solid var(--attirante-col);
 }
 
+.coursDispo{
+    text-align: center;
+    display: block;
 
+}
 .coursDispo .container
 {
+    /*background-image: linear-gradient( 66.4deg, rgba(43, 142, 168, 0.63) 12.8%, rgba(10, 41, 72, 0.73) 100.2% );*/
     display: flex;
+    /*background: rgba(4, 75, 81, 0.64);*/
+    /*position: relative;*/
     margin: 0 auto;
-    /*width: 100;*/
-    max-height: 100%;
+    min-width: 1800px;
+    /*max-height: 900px;*/
+    padding: 1% 22%;
     text-align: center;
 
 
@@ -685,7 +705,7 @@ input[type="radio"]:checked + section { display: block; }
     text-align: right;
     border: var(--bg-col) solid 3px;
     padding: 5px;
-    border-radius: 35px;
+    border-radius: 7px;
     background: var(--bg-col);
     color: var(--bg-col);
 
@@ -703,8 +723,9 @@ input[type="radio"]:checked + section { display: block; }
 
     /*float: left;*/
     color: var(--blanc-col);
-    font-family: lato;
-    font-size: 48px;
+    font-family: Futura;
+    font-size: 58px;
+    letter-spacing: 3px;
     margin: 15px 0px 20px 15px;
     border: var(--bg-col) solid;
     border-width: 0 0 3px 0;
@@ -720,7 +741,7 @@ input[type="radio"]:checked + section { display: block; }
     margin: 15px;
     padding: 5px;
     /*border: var(--fond-col) solid 3px;*/
-    border-radius: 24px;
+    border-radius: 8px;
     text-align: center;
     background: var(--blanc-col);
 
@@ -734,8 +755,6 @@ input[type="radio"]:checked + section { display: block; }
 {
 
     background: var(--attirante-col);
-
-
 
 }
 
@@ -774,9 +793,10 @@ input[type="radio"]:checked + section { display: block; }
     float: left;
     color: var(--bg-col);
     font-family: "Oswald Regular";
-    font-size: 22px;
+    font-size: 26px;
     text-decoration: none;
     margin: 8px;
+    /*margin-right: 0;*/
 
 
 
@@ -787,7 +807,7 @@ input[type="radio"]:checked + section { display: block; }
     margin: 18px;
     float: right;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 26px;
 
 
 }
@@ -795,8 +815,11 @@ input[type="radio"]:checked + section { display: block; }
 
 .sectionForum .topic .centerInfo
 {
-    margin: 10px;
-    text-align: center;
+    /*background: yellow;*/
+    width: 250px;
+    margin: 10px 45%;
+    /*margin-left: 0;*/
+    /*text-align: center;*/
     text-decoration: none;
     font-size: 20px;
 
@@ -1022,6 +1045,7 @@ input[type="radio"]:checked + section { display: block; }
     margin: 50px auto 50px auto;
     overflow: hidden;
     text-align: center;
+    background: rgba(0, 0, 0, 0.21);
 }
 
 .imgContainer img{
@@ -1072,11 +1096,13 @@ input[type="radio"]:checked + section { display: block; }
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    /*background-color: #141414;*/
+    /*background-color: rgba(4, 25, 30, 0.23);*/
     color: #ffffff;
     font-family: lato;
     font-size: 22px;
+
 }
+
 
 
 
@@ -1290,9 +1316,14 @@ input[type="radio"]:checked + section { display: block; }
 }
 /* Fin social media icons */
 
-#mesCours .container{
+.mesCours .container{
 
     margin-top: 70px;
+    /*background: black;*/
+}
+#mesCours{
+    text-align: center;
+
 }
 
 .rowCours{
@@ -1300,7 +1331,7 @@ input[type="radio"]:checked + section { display: block; }
     display: block;
     margin: 15px 15px;
     max-width: 800px;
-    height: 140px;
+    min-height: 140px;
     text-align: center;
     border: var(--blanc-col) solid;
     border-width: 0px 0 7px 0px;
@@ -1309,13 +1340,14 @@ input[type="radio"]:checked + section { display: block; }
     border-radius: 5px;
 
 
-    background: rgba(23, 57, 58, 0.57);
+    background: rgba(20, 48, 58, 0.57);
 
 }
 
 .rowCours .btnLink {
 
     float: right;
+    /*padding: 5% 1%;*/
 
     text-align: center;
     /*margin-bottom: 25px;*/
@@ -1351,7 +1383,7 @@ input[type="radio"]:checked + section { display: block; }
     font-family: Oswald;
     font-size: 28px;
     float: left;
-    padding: 18px 8px;
+    /*padding: 18px 8px;*/
     color: var(--blanc-col);
 
 
@@ -1377,7 +1409,8 @@ input[type="radio"]:checked + section { display: block; }
     border-radius: 8px;
 
     transform: scale(0.9);
-
+    filter: contrast(150%);
+    transition: ease-in 400ms;
     height: 100%;
 
 }
@@ -1385,9 +1418,9 @@ input[type="radio"]:checked + section { display: block; }
 .rowCours .imgCours img:hover {
 
 
-    transform: scale(1);
-    filter: contrast(200%);
 
+    transform: scale(1.056);
+    filter: contrast(200%);
 
 
 }
@@ -1396,7 +1429,8 @@ input[type="radio"]:checked + section { display: block; }
 .rowCours .duree {
 
     float: right;
-    padding: 43px 10px;
+    /*padding: 43px 10px;*/
+    padding: 5.8% 1%;
 
 
 
@@ -1409,9 +1443,10 @@ input[type="radio"]:checked + section { display: block; }
 
 .coursDispo_row{
 
+    position: relative;
     display: block;
     /*margin: 15px 15px;*/
-    margin-right: 35px;
+    margin-right: 25px;
     margin-bottom: 100px;
     min-width: 500px;
     max-width: 500px;
@@ -1426,6 +1461,7 @@ input[type="radio"]:checked + section { display: block; }
 
 
     background: rgba(23, 57, 58, 0.57);
+    background: rgba(0, 84, 88, 0.75);
 
 }
 
@@ -1491,12 +1527,17 @@ input[type="radio"]:checked + section { display: block; }
     /*transform: scale(0.9);*/
 
 
+}
+
+.coursDispo_row img:hover {
+
+
+    transform: scale(1.038);
+    filter: contrast(250%);
 
 
 
 }
-
-
 
 
 .coursDispo_row .coursDispo_row .duree {

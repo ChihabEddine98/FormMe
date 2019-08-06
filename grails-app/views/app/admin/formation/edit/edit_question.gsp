@@ -69,14 +69,14 @@
 
 
         <div class="champ">
-            <h3> Réponse *  </h3>
+            <label> Réponse *  </label>
             <g:select class="form-input" name="cours" from="['1','2','3','4']" value="${answer}"
             />
 
         </div>
 
         <div class="champ">
-            <h3> Quiz *  </h3>
+            <label> Quiz *  </label>
             <g:select class="form-input" name="cours" from="${track.Quiz.findAll {}}" value="${question.quizR}"
             />
 

@@ -23,7 +23,7 @@
 
     <div class="mainPane" >
 
-        <div id="mesCours">
+        <div class="mesCours">
 
         <div class="titres">
             <h1 >

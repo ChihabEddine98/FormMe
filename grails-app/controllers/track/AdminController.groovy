@@ -8,6 +8,7 @@ import org.json.JSONObject
 
 import authentication.AuthenticationCalculService
 import authentication.AuthenticationStatisticsService
+import spock.util.mop.Use
 
 import static org.springframework.http.HttpStatus.NOT_FOUND
 
@@ -91,11 +92,12 @@ class AdminController {
     @Secured(['ROLE_ADMIN'])
     def authenticationDetail(AuthenticationResult authenticationResult) {
         if (authenticationResult == null) {
-            notFound()
+			notFound()
             return
         }
 
-		String typeModality=params.type
+		String typeModality=authenticationResult.typeModalitie
+
 		if(typeModality.equals("BIOMETRIC"))
 		{
 			List<ObselTrust> listObselTrust = ObselTrust.findAllByAuthenticationResult(authenticationResult, [max: 1000, sort: "begin", order: "asc", offset: 0])
@@ -107,7 +109,7 @@ class AdminController {
 						listTrusts.add(it.trust)
 					}
 
-			listTrusts.reverse()
+//			listTrusts.reverse()
 
 
 
@@ -150,8 +152,8 @@ class AdminController {
 								JSONObject explrObject = jsonArray.getJSONObject(i)
 
 
-								distance+=" ClusterID     	: "+explrObject.get("clusterID ").toString().trim()
-								distance+=" \nSimularité "+explrObject.get("Simularité").toString().trim()
+								distance+=explrObject.get("clusterID ").toString().trim()
+								distance+=" \n: "+explrObject.get("Simularité").toString().trim()
 								distance+=" -----------------------"
 
 
@@ -256,7 +258,7 @@ class AdminController {
 
 					}
 
-			listTrusts.reverse()
+//			listTrusts.reverse()
 
 
 			//render(view: '/app/admin/authenticationResults/authenticationDetail', model:[listObselTrust: listObselTrust, authenticationResult: authenticationResult, listTrusts: listTrusts, distanceMean:distanceMean, distanceMedian:distanceMedian, distanceVariance:distanceVariance, distanceStandardDeviation:distanceStandardDeviation])
@@ -539,7 +541,7 @@ class AdminController {
 
 
 		render(view: '/app/admin/formation/formation_param', model:[])
-
+        return
 //		redirect( uri:'/admin/gestion')
 
 
@@ -584,8 +586,9 @@ class AdminController {
 		Topic topic2=new Topic(title: "Topic 2",section: forumDeCours,description: "topic 2 du Cours "+coursInstance.nom)
 		topic2.save()
 
-		listCours()
+		redirect(action: "listCours")
 
+		return
 	}
 
 	// Edit UI
@@ -639,7 +642,8 @@ class AdminController {
 
 					cours.save flush: true
 
-					listCours()
+					redirect(action: "listCours")
+
 
 					return
 				}
@@ -665,7 +669,8 @@ class AdminController {
 
 				cours.save flush: true
 
-				listCours()
+				redirect(action: "listCours")
+
 
 				return
 
@@ -674,19 +679,6 @@ class AdminController {
 			}
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 	// List
@@ -694,7 +686,8 @@ class AdminController {
 	def listCours(){
 
 
-		ArrayList<Cours> coursDispo=Cours.findAll()
+		params.max=4
+		ArrayList<Cours> coursDispo=Cours.list(params)
 
 		render(view: '/app/admin/formation/list/list_cours', model:[coursDispo:coursDispo])
 
@@ -729,7 +722,8 @@ class AdminController {
 
         moduleInstance.save()
 
-        listModule()
+		redirect(action: "listModule")
+		return
 
     }
 
@@ -737,7 +731,10 @@ class AdminController {
 	@Secured(['ROLE_ADMIN'])
 	def listModule(){
 
-		ArrayList<Module> modules=Module.findAll()
+
+		params.max=4
+
+		ArrayList<Module> modules=Module.list(params)
 		render(view: '/app/admin/formation/list/list_module', model:[modules:modules])
 
 	}
@@ -780,7 +777,8 @@ class AdminController {
 
 				moduleEdited.save flush: true
 
-				listModule()
+				redirect(action: "listModule")
+
 
 				return
 			}
@@ -841,9 +839,6 @@ class AdminController {
 		}
 
 
-		println(" Cours = "+coursNom)
-		println(" Module = "+moduleNom2)
-
 		Cours cours=Cours.findByNom(coursNom)
 		Module module=Module.findByNomAndCours(moduleNom2,cours)
 
@@ -858,7 +853,8 @@ class AdminController {
 
 		chapitreInstance.save()
 
-		listChapitre()
+		redirect(action: "listChapitre")
+		return
 
 	}
 
@@ -903,7 +899,8 @@ class AdminController {
 
 				chapitreEdited.save flush: true
 
-				listChapitre()
+				redirect(action: "listChapitre")
+
 
 				return
 			}
@@ -916,7 +913,10 @@ class AdminController {
 	@Secured(['ROLE_ADMIN'])
 	def listChapitre(){
 
-		ArrayList<Chapitre> chapitres=Chapitre.findAll()
+		params.max=4
+
+
+		ArrayList<Chapitre> chapitres=Chapitre.list(params)
 		render(view: '/app/admin/formation/list/list_chapitre', model:[chapitres:chapitres])
 
 
@@ -990,6 +990,9 @@ class AdminController {
 												contenu: contenu)
 			tR.save()
 
+			redirect(action: "listRessource",params: [typeR:"txt"])
+
+			return
 
 		}
 
@@ -1010,6 +1013,11 @@ class AdminController {
 					format: ressourceInstance.type)
 			tR.save()
 
+
+			redirect(action: "listRessource",params: [typeR:"media"])
+
+			return
+
 		}
 		else if(type.equals("quiz"))
 		{
@@ -1027,14 +1035,14 @@ class AdminController {
 
 			tR.save()
 
+			redirect(action: "listRessource",params: [typeR:"quiz"])
 
-			listRessource("quiz")
 			return
 
 		}
 
-		listChapitre()
-
+		redirect(action: "listChapitre")
+		return
 
 	}
 
@@ -1093,7 +1101,8 @@ class AdminController {
 
 			ressEdited.save flush: true
 
-			listRessource("txt")
+			redirect(action: "listRessource",params: [typeR:"txt"])
+
 
 			return
 
@@ -1123,7 +1132,7 @@ class AdminController {
 
 			ressEdited.save flush: true
 
-			listRessource("media")
+			redirect(action: "listRessource",params: [typeR:"media"])
 
 			return
 		}
@@ -1145,7 +1154,7 @@ class AdminController {
 
 			ressEdited.save flush: true
 
-			listRessource("quiz")
+			redirect(action: "listRessource",params: [typeR:"quiz"])
 			return
 
 		}
@@ -1168,10 +1177,12 @@ class AdminController {
 			quiz=quizId
 		}
 
+		params.max=6
 		Quiz quizR=Quiz.findById((long)Integer.parseInt(quiz))
 
-		ArrayList<Question> questions=Question.findAllByQuizR(quizR)
-		render(view: '/app/admin/formation/list/list_question', model:[questions:questions,qID:quiz])
+		int countQ=Question.countByQuizR(quizR)
+		ArrayList<Question> questions=Question.findAllByQuizR(quizR,params)
+		render(view: '/app/admin/formation/list/list_question', model:[questions:questions,qID:quiz,countQ:countQ])
 
 		return
 	}
@@ -1225,7 +1236,7 @@ class AdminController {
 
 				questionInstance.save()
 
-				listQuestions(quizId)
+				redirect(action: "listQuestions",params: [quizId: quizId])
 
 				return
 
@@ -1245,8 +1256,7 @@ class AdminController {
 	def listRessource(String typeR){
 
 		String type=params.type
-
-
+		String typeFiltre=params.typeFiltre
 
 		println(" typee ="+type)
 		println(" typee R ="+typeR)
@@ -1267,27 +1277,113 @@ class AdminController {
 		{
 			if(type.equals("media"))
 			{
+				params.max=4
+
 				ArrayList<AudioImgVideo> ressources
-				ressources=Ressource.findAllByTypeInList(["img", "video","audio"])
-				render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:type])
+				if(typeFiltre != null)
+				{
+					if(typeFiltre in ["audio","img","video"])
+					{
+						params.max=5
+
+						ressources=Ressource.findAllByType(typeFiltre,params)
+
+						render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:'media',typeFiltre:typeFiltre])
+						return
+					}
+
+				}
+				else {
+					ressources=Ressource.findAllByTypeInList(["img", "video","audio"],params)
+					println(" hnaaa rani modif")
+
+					render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:type])
+					return
+				}
+
+
+
 
 			}
 			else {
 				if(type.equals("txt"))
 				{
-					ArrayList<AudioImgVideo> ressources
-					ressources=Ressource.findAllByType(type)
+					params.max=2
+
+					ArrayList<TextRessource> ressources
+					ressources=Ressource.findAllByType(type,params)
 					render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:type])
+                    return
+
+                }
+				else if(type.equals("quiz")) {
+					params.max=5
+
+					ArrayList<Quiz> ressources
+					ressources=Ressource.findAllByType(type,params)
+					render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:type])
+                    return
+
+                }
+				else {
+					paramFormation()
+                    return
+
+                }
+
+			}
+		}
+
+
+
+
+
+
+	}
+
+	// List
+	@Secured(['ROLE_ADMIN'])
+	def listMediaRessources(){
+
+		String type=params.type
+
+
+
+		if(!type.isEmpty())
+		{
+			if(type.equals("audio"))
+			{
+				params.max=3
+
+				ArrayList<AudioImgVideo> ressources
+				ressources=Ressource.findAllByType("audio",params)
+
+				render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:'media'])
+				return
+			}
+			else {
+				if(type.equals("img"))
+				{
+					params.max=1
+
+					ArrayList<TextRessource> ressources
+					ressources=Ressource.findAllByType("img",params)
+					redirect(view: '/app/admin/formation/list/list_ressource', params: [ressources:ressources,type:'media'])
+					return
 
 				}
-				else if(type.equals("quiz")) {
+				else if(type.equals("video")) {
+					params.max=5
+
 					ArrayList<Quiz> ressources
-					ressources=Ressource.findAllByType(type)
-					render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:type])
+					ressources=Ressource.findAllByType("video",params)
+					render(view: '/app/admin/formation/list/list_ressource', model:[ressources:ressources,type:'media'])
+					return
 
 				}
 				else {
 					paramFormation()
+					return
 
 				}
 
@@ -1324,14 +1420,89 @@ class AdminController {
 	def gestionUsers(Integer max){
 
 
+
+		String filtre=params.filtre
 		params.max=5
+		def userList
 
-		def userList=User.list(params)
+		if(filtre==null)
+		{
+			def count=User.count
+			userList=User.list(params)
+
+			render(view: '/app/admin/formation/list/list_user' , model: [users:userList,count: count])
+			return
+	//		redirect( uri:'/admin/gestion/list/user')
+		}
+		else {
+
+			if(filtre.equals("cours"))
+			{
 
 
 
-		render(view: '/app/admin/formation/list/list_user' , model: [users:userList])
-//		redirect( uri:'/admin/gestion/list/user')
+
+				def count=Cours.countByUsersIsNotNull()
+				def cours=Cours.list()
+				def users=new ArrayList<User>()
+				def usersID=new ArrayList<Long>()
+
+
+
+				cours.each {
+					if (it.users!=null)
+					{
+						users.addAll(it.users)
+					}
+				}
+				ArrayList<User> newList = new ArrayList<>()
+
+				users.each {
+					if(!newList.contains(it))
+					{
+						newList.add(it)
+						usersID.add(it.id)
+					}
+				}
+
+				count=newList.size()
+
+
+				userList=User.findAllByIdInList(usersID,params)
+				render(view: '/app/admin/formation/list/list_user' , model: [users:userList,filtre:filtre,count:count])
+				return
+			}
+			if(filtre.equals("simple"))
+			{
+				def count=UserRole.countByRole(Role.findByAuthority("ROLE_USER"))
+
+				def userRole=UserRole.findAllByRole(Role.findByAuthority("ROLE_USER"),params)
+				userList=new ArrayList<User>()
+				userRole.each {
+
+					userList.add(it.user)
+
+				}
+				render(view: '/app/admin/formation/list/list_user' , model: [users:userList,filtre:filtre,count:count])
+				return
+			}
+			if(filtre.equals("admin"))
+			{
+				def count=UserRole.countByRole(Role.findByAuthority("ROLE_ADMIN"))
+				def userRole=UserRole.findAllByRole(Role.findByAuthority("ROLE_ADMIN"),params)
+				userList=new ArrayList<User>()
+				userRole.each {
+
+					userList.add(it.user)
+
+				}
+
+				render(view: '/app/admin/formation/list/list_user' , model: [users:userList,filtre:filtre,count:count])
+				return
+			}
+		}
+
+
 
 	}
 
@@ -1345,6 +1516,72 @@ class AdminController {
 			}
 			'*'{ render status: NOT_FOUND }
 		}
+	}
+
+
+
+
+	@Secured(['ROLE_ADMIN'])
+	def authSystemParUser()
+	{
+
+		params.max=5
+		def users=User.list(params)
+
+
+
+
+		render(view: '/app/admin/authenticationResults/authSystemeParUser', model:[users:users])
+
+
+	}
+	@Secured(['ROLE_ADMIN'])
+	def listAuthResults()
+	{
+
+		params.max=5
+		def users=User.list(params)
+
+
+		def userAuthFormationID=params.userAuthFormationID
+
+		def authResults=UserAuthentificationFormation.findById(Long.parseLong(userAuthFormationID.toString())).authenticationResult
+
+
+		render(view: '/app/admin/authenticationResults/listAuthResults', model:[users:users,authResults: authResults])
+
+
+	}
+
+
+	@Secured(['ROLE_ADMIN'])
+	def authSystemParCours()
+	{
+
+		params.max=5
+		def cours=Cours.list(params)
+
+
+		render(view: '/app/admin/authenticationResults/authSystemeParCours', model:[cours:cours])
+
+
+	}
+	@Secured(['ROLE_ADMIN'])
+	def detailsGenerals()
+	{
+
+		params.max=5
+		def users=User.list(params)
+
+
+		def userAuthFormationID=params.userAuthFormationID
+
+		def authResults=UserAuthentificationFormation.findById(Long.parseLong(userAuthFormationID.toString())).authenticationResult
+
+
+		render(view: '/app/admin/authenticationResults/detailsGenerals', model:[users:users,authResults: authResults])
+
+
 	}
 
 

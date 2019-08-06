@@ -68,6 +68,13 @@
         </table>
 
         <hr>
+        <div class="pagination">
+            <g:paginate total="${track.Chapitre.list().size()}"/>
+
+        </div>
+
+
+        <hr>
 
         <div class="champ col-md-3 col-sm-4">
             <g:link class="button btn-danger" controller="admin" action="paramFormation" params="[type:'quiz']">

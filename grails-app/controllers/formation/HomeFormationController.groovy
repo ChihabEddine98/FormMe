@@ -18,7 +18,7 @@ class HomeFormationController {
 
         User user = springSecurityService.currentUser
 
-        params.max=2
+        params.max=3
         def listCours=Cours.list(params)
 
         render(view: "/formation/home",model: [userInstance:user,listCours:listCours])
@@ -154,8 +154,11 @@ class HomeFormationController {
 			
 			// Inscription Cours
 			EventService.InscriptionFormation(user,cours)
-        
-			render(view: "/formation/home",model: [userInstance:user])
+
+        params.max=3
+        def listCours=Cours.list(params)
+
+        render(view: "/formation/home",model: [userInstance:user,listCours: listCours])
 
 
     }
